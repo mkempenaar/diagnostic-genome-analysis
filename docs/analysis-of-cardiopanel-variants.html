@@ -6,14 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Week 3 Analysis of Cardiopanel Variants | Case background information and exercises</title>
 <meta name="author" content="Marcel Kempenaar and Ronald Wedema">
-<meta name="description" content="Once we are done with mapping all reads to the reference genome, we can determine the variant positions within the genes of interest. For this we use a Galaxy tool called LoFreq that will report...">
-<meta name="generator" content="bookdown 0.35 with bs4_book()">
+<meta name="generator" content="bookdown 0.36 with bs4_book()">
 <meta property="og:title" content="Week 3 Analysis of Cardiopanel Variants | Case background information and exercises">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Once we are done with mapping all reads to the reference genome, we can determine the variant positions within the genes of interest. For this we use a Galaxy tool called LoFreq that will report...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Week 3 Analysis of Cardiopanel Variants | Case background information and exercises">
-<meta name="twitter:description" content="Once we are done with mapping all reads to the reference genome, we can determine the variant positions within the genes of interest. For this we use a Galaxy tool called LoFreq that will report...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -22,6 +19,9 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
 <link rel="stylesheet" href="style.css">
+<meta name="description" content="Once we are done with mapping all reads to the reference genome, we can determine the variant positions within the genes of interest. For this we use a Galaxy tool called LoFreq that will report...">
+<meta property="og:description" content="Once we are done with mapping all reads to the reference genome, we can determine the variant positions within the genes of interest. For this we use a Galaxy tool called LoFreq that will report...">
+<meta name="twitter:description" content="Once we are done with mapping all reads to the reference genome, we can determine the variant positions within the genes of interest. For this we use a Galaxy tool called LoFreq that will report...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -210,19 +210,19 @@ chromosome) on which they lie.</p>
 <code>IRanges</code> since it contain simple positional data (chromosome
 and position (start/ stop for BED-data). Let’s first see an example of representing a few exons from the BED file into <code>IRanges</code> objects (you don’t need to replicate this
 example).</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Only needed when the package is missing</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://bioconductor.github.io/BiocManager/">"BiocManager"</a></span><span class="op">)</span><span class="op">)</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"GenomicRanges"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># This package contains the 'IRanges', 'GRanges' and 'GRangesList' classes we will use</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bioconductor.org/packages/GenomicRanges">GenomicRanges</a></span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Loading the BED data (note: use your own data from assignment 1)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/bed_data.RData"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Print all rows where the gene name is for example 'SOD2'</span></span>
 <span><span class="va">bed_file</span><span class="op">[</span><span class="va">bed_file</span><span class="op">$</span><span class="va">gene</span> <span class="op">==</span> <span class="st">"SOD2"</span>, <span class="op">]</span></span></code></pre></div>
 <pre><code>##     chromosome     begin       end gene
@@ -236,7 +236,7 @@ exons of the <code>SOD2</code> gene located on chromosome 6. For each exon we ha
 a begin and end coordinate. This data can be converted into <code>IRanges</code> by
 using the similar named function and providing the correct columns as
 shown below:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get the data as a subset of the cardiopanel data</span></span>
 <span><span class="va">sod2</span> <span class="op">&lt;-</span> <span class="va">bed_file</span><span class="op">[</span><span class="va">bed_file</span><span class="op">$</span><span class="va">gene</span> <span class="op">==</span> <span class="st">"SOD2"</span>, <span class="op">]</span></span>
 <span></span>
@@ -254,12 +254,12 @@ shown below:</p>
 ##   SOD2 160109138 160109294       157
 ##   SOD2 160113673 160113915       243
 ##   SOD2 160114157 160114219        63</code></pre>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate and print the length of a gene</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"Length of SOD2:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/start.html">width</a></span><span class="op">(</span><span class="va">ranges</span><span class="op">)</span> <span class="op">)</span>, <span class="st">"bp"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## Length of SOD2: 869 bp</code></pre>
 <p>We see the same data now represented as an <code>IRanges</code> object. We do however both miss some data (the chromosome) and get some extra data as well (the <em>width</em> (length) of each exon). As it’s important to know on which chromosome each gene lies we will convert our <code>ranges</code> object into a <code>GRanges</code> object that combines both data:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Converts to GRanges and adds the text 'chr' to each chromosome</span></span>
 <span><span class="va">granges</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/GenomicRanges/man/GRanges-class.html">GRanges</a></span><span class="op">(</span>seqnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"chr"</span>, <span class="va">sod2</span><span class="op">$</span><span class="va">chromosome</span><span class="op">)</span>,</span>
 <span>                   ranges <span class="op">=</span> <span class="va">ranges</span><span class="op">)</span></span>
@@ -303,7 +303,7 @@ for value in x:
 <p>This is still pretty readable code, but in R we never require this explicit form even though we <em>could</em>. This simple one liner in R for instance calculates the average log2 ratio of two columns from a data-frame that can contain thousands of rows and many columns, at once:</p>
 <pre><code>mean(log2(dat['sample1], dat['sample2']))</code></pre>
 <p>which would require a rather large for-loop in most other languages. When we do want to apply something to each element separately in R we often use - rather complicated but efficient - <code>apply</code> functions. For now though we will use the easier to understand <code>for</code> loop to perform our code on data for each gene (point 1 above). With the following example on iterating over our bed_data you should be able to perform this assignment:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load the stored data; do not repeat. Object name in this</span></span>
 <span><span class="co"># example is 'bed_data' </span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">'data/bed_data_GRangesList.RData'</span><span class="op">)</span></span>
@@ -356,7 +356,7 @@ for value in x:
 <span class="header-section-number">3.1.8</span> Rsamtools<a class="anchor" aria-label="anchor" href="#rsamtools"><i class="fas fa-link"></i></a>
 </h3>
 <p>Again, we have to briefly introduce this library before you will be able to use it. Rsamtools is described as “<em>an interface to BAM files</em>”, the file that contains all the mapping information.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Installing required library</span></span>
 <span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"Rsamtools"</span><span class="op">)</span></span>
 <span></span>
@@ -444,7 +444,7 @@ number of bases that are missing.</p>
 <pre><code>chr1    16888710    a   31  ..,.,..,..,,-2ct,,..,.,,.-2CT,,.,,.,.,, nGFkGUlFF?DFHFGGEnHFFHHGFHG5GGB</code></pre>
 </div>
 <p>Look at the data that we get for each position and note that we have - at least - two rows of data per position; one on each strand (as we’ve also seen in IGV). If we have <em>more</em> than two rows of data for a single position, it might be a variant which is coincidentally demonstrated in the example data below:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load the example Pileup data for the SOD2 gene (do not repeat)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/sod2_pileup.RData"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sod2</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
@@ -490,7 +490,7 @@ number of bases that are missing.</p>
 <code>FUN</code>: the function to perform on all grouped rows (in this case, the <code>sum</code> function)</li>
 </ul>
 <p>Use the code below but check and rename the used variables to suit your data.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">coverage</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/aggregate.html">aggregate</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>count<span class="op">=</span><span class="va">sod2</span><span class="op">$</span><span class="va">count</span><span class="op">)</span>, </span>
 <span>                     by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>pos<span class="op">=</span><span class="va">sod2</span><span class="op">$</span><span class="va">pos</span><span class="op">)</span>, FUN<span class="op">=</span><span class="va">sum</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">coverage</span><span class="op">)</span></span></code></pre></div>
@@ -509,7 +509,7 @@ number of bases that are missing.</p>
 </ul>
 <p>Given these tasks and your code from previous assignments, you should be able to do this. Store the calculated values (4 values) combined with the gene name in a new data-frame and show it completely in your lab-journal, ordered by the percentage of low-coverage positions, descending.</p>
 <p>The following code can be used to create an empty data-frame and add rows to the data. Note that this isn’t done very often, use and forget. The first line of code (the <code>options</code> function) is needed to stop some annoying R behaviour.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Tell R not to complain...</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
@@ -546,7 +546,7 @@ number of bases that are missing.</p>
 <span class="header-section-number">3.3.2</span> End Result<a class="anchor" aria-label="anchor" href="#end-result"><i class="fas fa-link"></i></a>
 </h3>
 <p>Below is an example of data you might get when you have completed this assignment. Note that all values as well as the column names will be different in your case.</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load example data</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/load.html">load</a></span><span class="op">(</span><span class="st">"data/statistics.RData"</span><span class="op">)</span></span>
 <span></span>
@@ -643,7 +643,7 @@ number of bases that are missing.</p>
 <li>Split the column containing the frequency value using the <code>strsplit</code> function</li>
 </ol>
 <p>The output of this function is a list in which each item is a vector with the separate items resulting from the split (inspect this object in RStudio). To get the frequency value from this list, here is some R magic that converts the result from <code>strsplit</code> into a matrix (found on <a href="https://stackoverflow.com/questions/20428742/select-first-element-of-nested-list">Stackoverflow</a>):</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/do.call.html">do.call</a></span><span class="op">(</span><span class="va">rbind</span>, <span class="va">bed_splitted</span><span class="op">)</span>, n<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##           chromosome    begin      end  gene
 ## ABCC9.814         12 21953958 21954135 ABCC9
@@ -682,7 +682,7 @@ number of bases that are missing.</p>
 <li>Create a <code>GRanges</code> object as we’ve done for assignment 3 by simply creating an <code>IRanges</code> object where the <code>start</code> and <code>end</code> parameters both get the variant position column (<code>POS</code> column). Also provide the <code>seqnames</code> parameter to <code>GRanges</code> which get the contents of the chromosome column.</li>
 </ol>
 <p><code>GRanges</code> objects can contain other data as well, called <em>associated metadata</em>. Using the <code>mcols</code> function we can see existing or assign data to each variant. Adding this as a data-frame allows us to set a name for this column as demonstrated below with an example from the previous chapter:</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Select and show data for a single gene (note that it specifies "... and 0 metadata columns")</span></span>
 <span><span class="co"># ('granges' object is used from assignment 3)</span></span>
 <span><span class="va">granges</span></span></code></pre></div>
@@ -696,7 +696,7 @@ number of bases that are missing.</p>
 ##   SOD2     chr6 160114157-160114219      *
 ##   -------
 ##   seqinfo: 1 sequence from an unspecified genome; no seqlengths</code></pre>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Generate some random values for 'allele frequency'</span></span>
 <span><span class="va">allele_frequency</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">5</span>, mean <span class="op">=</span> <span class="fl">0.45</span>, sd <span class="op">=</span> <span class="fl">0.35</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span></span>
@@ -707,10 +707,10 @@ number of bases that are missing.</p>
 <pre><code>## GRanges object with 5 ranges and 1 metadata column:
 ##        seqnames              ranges strand |        AF
 ##           &lt;Rle&gt;           &lt;IRanges&gt;  &lt;Rle&gt; | &lt;numeric&gt;
-##   SOD2     chr6 160103505-160103690      * |       0.5
-##   SOD2     chr6 160105866-160106085      * |       0.6
-##   SOD2     chr6 160109138-160109294      * |       0.1
-##   SOD2     chr6 160113673-160113915      * |       0.7
+##   SOD2     chr6 160103505-160103690      * |       0.6
+##   SOD2     chr6 160105866-160106085      * |       0.8
+##   SOD2     chr6 160109138-160109294      * |       0.8
+##   SOD2     chr6 160113673-160113915      * |       0.3
 ##   SOD2     chr6 160114157-160114219      * |       0.8
 ##   -------
 ##   seqinfo: 1 sequence from an unspecified genome; no seqlengths</code></pre>
@@ -806,7 +806,7 @@ number of bases that are missing.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Case background information and exercises</strong>" was written by Marcel Kempenaar and Ronald Wedema. It was last built on 2023-10-12.</p>
+    <p>"<strong>Case background information and exercises</strong>" was written by Marcel Kempenaar and Ronald Wedema. It was last built on 2024-02-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

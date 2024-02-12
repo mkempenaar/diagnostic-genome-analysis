@@ -1,12 +1,9 @@
 # Intro *NGS and Genetics* Project
 
 In this project you will learn the bioinformatic basics of how to
-analyse *Next-Generation Sequence* (NGS) data of of patients diagnosed with [cardiomyopathy](https://en.wikipedia.org/wiki/Cardiomyopathy). Using this
-case we will discover genetic variations that are in the genomic data of
-a patient having a suspected condition. The end-goal is to identify and
-report on those genomic variations that are possibly disease causing.
-All course material can be found in this document, some theory, a *lot*
-of links to resources, questions and assignments.
+analyse *Next-Generation Sequence* (NGS) data of patients diagnosed with either [cardiomyopathy](https://en.wikipedia.org/wiki/Cardiomyopathy) or [Medulloblastoma](https://en.wikipedia.org/wiki/Medulloblastoma). Using this case we will discover genetic variations that are in the genomic data of a patient having a suspected condition. The end-goal is to identify and report on those genomic variations that are possibly disease causing. All course material can be found in this document, some theory, a *lot* of links to resources, questions and assignments.
+
+## Cardiomyopathy
 
 ```{r, echo=FALSE}
 knitr::include_graphics("images/cardiomyopathy.png")
@@ -21,6 +18,16 @@ As with many diseases, one of the causes of cardiomyopathy are a combination of 
 * **Restrictive** cardiomyopathy (RCM)
 
 The human genetics department of the University Medical Center Groningen diagnoses patients suspected to suffer from cardiomyopathy. During the diagnosis, the patients genome is compared to a set of reference genes known to be involved in the disease (called a *gene panel*). If variations are found they are checked and compared to known variants to classify or score their *severity*. Using these variations the type (dilated, restrictive, etc.) of the disease and how severe it is can be diagnosed, combined with regular data sources (physical exam, EKG, etc.).
+
+## Medulloblastoma
+
+* Article: 
+* Data set:
+* Gene panels:
+  - #1: https://www.ncbi.nlm.nih.gov/gtr/tests/607978/
+  - #2: https://www.preventiongenetics.com/testInfo?val=Medulloblastoma-Panel
+  - #3: https://repositorium.sdum.uminho.pt/bitstream/1822/57968/1/Leal_et_al-2018-Neuropathology.pdf
+
 
 
 ::: {.rmdnote}
@@ -145,13 +152,13 @@ does it contain too many assignments. This is on purpose since the goal
 of this week is primarily for you to understand:
 
   - what the goal of this course is 
-  - what is the disease you are looking into?
-  - what question(s) do we want to answer? 
+    - what is the disease you are looking into?
+    - what question(s) do we want to answer? 
   - the tools we will be using 
-  - what is this Galaxy website? *follow a tutorial to get familiar with it*
-  - what kind of tools are available in Galaxy? 
+    - what is this Galaxy website? *follow a tutorial to get familiar with it*
+    - what kind of tools are available in Galaxy? 
   - the data which we will use throughout this course 
-  - how is this data generated?
+    - how is this data generated?
   - which analysis steps are needed to answer our research question?
 
 ::: {.rmdnote}
@@ -162,7 +169,7 @@ answer or explain some of the above questions you will probably have a
 hard time. To summarize, make sure that the general theory of what is
 shown here is clear at the end of this chapter. 
 
-Either follow all the links to external resources, use google or (and this works pretty well) search for some of the terms or techniques on Youtube. Without this knowledge, you will manage to follow the steps during the first few weeks but will surely struggle later on when you need to make decisions on your own. Your final grade is not based on how you complete your assignments, but also on the level of understanding that you show in your final presentation on the subject.
+Either follow all the links to external resources, use google or (and this works pretty well) search for some of the terms or techniques on Youtube. Without this knowledge, you will manage to follow the steps during the first few weeks but will surely struggle later on when you need to make decisions on your own. Your final grade is not based on how you complete your assignments, but also on the level of understanding that you show on your final poster.
 :::
 
 We begin the practical of each new week (chapter) by first having a group discussing on what we did in the
@@ -180,16 +187,15 @@ discusses the complete process of analyzing raw sequencing data for
 variant analysis and while it goes beyond the scope of this project it
 is a good read.
 
-Of course, the topics in the lectures to prepare you for the genetics exam are also the same topics you need to understand to be able to successfully complete the case.
-
+Besides this practical, the lectures from the Theory of Bioinformatics module also greatly add to your understanding of both the techniques, data and challenges we need to solve.
 
 ## Reporting
 
 To help you work trough these document and prepare you as best as
-possible for the final presentation it is best to keep track of all your
+possible for the poster presentation it is best to keep track of all your
 analysis steps and findings.
 
-As you will already have learned during the "Wetenschappelijke Cyclus"
+As you will learn during the "Data Science and Visualization using R"
 module, a type of document called [R
 Markdown](https://rmarkdown.rstudio.com) is very suitable for this
 purpose. In this document you can write a combination of text and code
@@ -202,12 +208,9 @@ not comparable with a normal written report (no chapters called
 state what you are doing and why this is important and where your
 results belong to. Do note however that when you use figures and tables
 (please do!), provide them with a clear caption to explain what you are
-showing. The logfile is not part of the grading (in the next module it
-will be!), here it is just a convenient way to keep track of all steps
-and results.
+showing.
 
-
-## Assignments week1
+## Assignments Week 1
 
 ### Galaxy Server
 
@@ -234,14 +237,16 @@ need to learn at least the following concepts:
   - Creating a new history or rename your current - empty - history 
   - Uploading data from a local file
   - Finding/ selecting a tool
-  - Selecting the input data for a tool
-  - changing settings for a tool
-  - Executing a tool
-  - Using the History to View tool-output
-  - Re-run a tool
-  - Delete elements
-  - Select and copy elements to a new history
-  - And - preferably - something about creating a workflow (This item will be explained later on too)
+    - Selecting the input data for a tool
+    - changing settings for a tool
+    - Executing a tool
+  - Using the History to 
+    - View tool-output
+    - Re-run a tool
+    - Delete elements
+    - Select and copy elements to a new history
+  - And - preferably - something about creating a workflow 
+    - This item will be explained later on too
 
 You only need to report *which* tutorial you followed/ video tutorial
 you watched.
@@ -272,13 +277,9 @@ and therefore the easiest method of finding the tool you need is to
 simply enter the name in the *search tools* field in the top-left
 corner.
 
-
-
 ### data and quality control
 
-For this project we have "simulated" patient data from a single patient
-with the suspected disease you are investigating. The patient data
-consists of next-generation Illumina MiSeq reads from captured exomes
+For this project we have patient data from a patients with the suspected disease you are investigating. The patient data consists of next-generation Illumina reads (MiSeq or NextSeq) from captured exomes
 for a panel of a given size (small number of genes). For example, when
 looking at the gene panel used to diagnose the hearth disease
 cardiomyopathy there is sequence data available on "only" 55 genes out
@@ -465,40 +466,19 @@ Complete the table below.
 ### Quality Control
 
 We need to load the patient data you are going to work on during this
-project. All patient data is already on the server and you first need
+project. All patient data is stored on the network and you first need
 to load it into your Galaxy <strong>History</strong> to work with. To do
-this first go to the <strong>Shared Data</strong> menu and click on
-<strong>Data Libraries</strong>
+this click on the 'Upload Data' button and next on the 'Choose local files' button at the bottom of the popup. Here, you can browse to the folder on the network that contain all samples which is: `/commons/Themas/Minor01/samples`
+Note that for Cardiomyopathy, use the `CM-DNASeq` folder and for Medulloblastoma, use the `MB-DNASeq` folder.
 
-```{r, echo=FALSE}
-knitr::include_graphics("images/dataLibrariesMenu.png")
-```
-
-
-```{r, echo=FALSE}
-knitr::include_graphics("images/patientDataMenu.png")
-```
-
-Open the `patientData` library. Here you will find the sequence data
-from different cases, each named by the disease TODO: new screenshot depicting the cases. As you can see each case
+As you can see each case
 consists of two files. This is because the forward and reverse reads are
-split up into two files (*paired-end sequencing*). The files with **R1**
-in the name are the forward reads and the reverse reads have **R2** in
+split up into two files (*paired-end sequencing*). The files with **R1** or **\_1** in the name are the forward reads and the reverse reads have **R2** or **\_2** in
 their name, remember this as some tools require to select the proper
 file.
 
-If for example `Alzheimer` is your disease case, you can select both
-read files for `Alzheimer`. Check the boxes for the R1 and R2 of Sample1
-and click the <strong>Download</strong> button at the top, chose a file
-extension (doesn't matter) which starts the download. Next, open the
-Linux file browser and navigate to your `Downloads` folder. Extract the
-downloaded archive file resulting in two new archived files (in the
-`.fastq.gz` format which means the files are compressed using `gzip`).
-In Galaxy, create a new history or open the default one and in the
-`Tools` menu click on the `Get Data` and `Upload File` links. Either
-drag or select both `SampleX_xxxxx.fastq.gz` files to get them ready for
-the upload but don't upload just yet.
-
+If for example `Medulloblastoma` is your disease case, you can select both
+read files from a `Medulloblastoma` sample, such as `SRR29613194`. 
 Galaxy automatically tries to detect the file format that you will add
 to a history, most often using it's file extension. In this case, we
 need to make sure that Galaxy has the proper format selected which is
@@ -509,12 +489,6 @@ below) doesn't know when a read is of sufficient quality or worse,
 qualifies reads incorrectly. Select the proper type from the drop-down
 menu and upload the files.
 
-
-```{r, echo=FALSE}
-knitr::include_graphics("images/patientData.png")
-```
-
-
 After you have uploaded the sequence data in your history it is
 available to work on. If all went correct, you should now see the two
 sequence files in your History of Galaxy.
@@ -524,7 +498,7 @@ knitr::include_graphics("images/historyPatient.png")
 ```
 
 
-``` 
+::: {.rmdnote}
 Note for FireFox users:
 
 At some point you might see an error page when *viewing* the contents of
@@ -546,7 +520,9 @@ Edit Attributes* and *Delete*. When you click on the name of an item in
 the History additional actions such as downloading the data, viewing the
 Galaxy (job) background information or visualising the data appear. Go
 ahead poke the `eye`-button now and have a look at the raw data
-```
+
+:::
+
 
 When you start to analyse NGS data it is very important to get a feeling
 for the data. What does the data look like? What is the quality of my
@@ -556,9 +532,8 @@ would first need to identify what is wrong with the data. To look at
 many (quality) aspects of our imported datasets, we are going to start a
 tool named
 [**FastQC**](http://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
-In the <strong>Tools</strong> panel, open the <strong>Diagnostic Genome
-Analysis</strong> category and click on the <strong>FastQC</strong>
-tool. The settings of the FastQC tool should appear in the middle
+In the <strong>Tools</strong> panel, search for the <strong>FastQC</strong>
+tool (can also be found under the `FASTQ Quality Control` section. The settings of the FastQC tool should appear in the middle
 section. A help is usually shown when you open a tool as well as the
 scientific literature associated with the tool for further references.
 For the FastQC tool we can load short read data from our history. Also a
@@ -591,11 +566,9 @@ webpage output for data 1
 knitr::include_graphics("images/fastQCHistory.png")
 ```
 
-
 In the middle panel the webpage with the results for data 1 should open.
 A summary of the quality checks performed is visable and gives you a
 quick overview of the checks that need your attention.
-
 
 Report on the total number of sequences analysed, the number of
 sequences flagged as poor quality, the sequence length and GC
@@ -648,8 +621,9 @@ R2 files.
 *TruSeq3 (paired-ended, for miSeq and HiSeq)* adapters.
   - From the *Trimmomatic operation* select the Sliding window trimming and choose 4
 bases to average across, the quality should be 20 (as a minimum).
-  -  Click on the plus sign (*Insert Trimmomatic Operation* button) and
-Select the *Drop reads below a specified length*  Set the minimum read
+    - Click on the plus sign (*Insert Trimmomatic Operation* button) and
+Select the *Drop reads below a specified length*
+    - Set the minimum read
 length to **70** (can you think of a reason why you do not want to have too many short reads?)
   - Execute the tool.
 

@@ -3,12 +3,14 @@ end-products
 rubric
 schedule-and-deliverables
 intro-ngs-and-genetics-project
+cardiomyopathy
+medulloblastoma
 tools
 data
 analysis
 literature
 reporting
-assignments-week1
+assignments-week-1
 galaxy-server
 learning-galaxy
 bioinformatics-galaxy-server

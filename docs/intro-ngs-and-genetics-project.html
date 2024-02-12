@@ -6,14 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Week 1 Intro NGS and Genetics Project | Case background information and exercises</title>
 <meta name="author" content="Marcel Kempenaar and Ronald Wedema">
-<meta name="description" content="In this project you will learn the bioinformatic basics of how to analyse Next-Generation Sequence (NGS) data of of patients diagnosed with cardiomyopathy. Using this case we will discover genetic...">
-<meta name="generator" content="bookdown 0.35 with bs4_book()">
+<meta name="generator" content="bookdown 0.36 with bs4_book()">
 <meta property="og:title" content="Week 1 Intro NGS and Genetics Project | Case background information and exercises">
 <meta property="og:type" content="book">
-<meta property="og:description" content="In this project you will learn the bioinformatic basics of how to analyse Next-Generation Sequence (NGS) data of of patients diagnosed with cardiomyopathy. Using this case we will discover genetic...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Week 1 Intro NGS and Genetics Project | Case background information and exercises">
-<meta name="twitter:description" content="In this project you will learn the bioinformatic basics of how to analyse Next-Generation Sequence (NGS) data of of patients diagnosed with cardiomyopathy. Using this case we will discover genetic...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -22,6 +19,9 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
 <link rel="stylesheet" href="style.css">
+<meta name="description" content="In this project you will learn the bioinformatic basics of how to analyse Next-Generation Sequence (NGS) data of patients diagnosed with either cardiomyopathy or Medulloblastoma. Using this case...">
+<meta property="og:description" content="In this project you will learn the bioinformatic basics of how to analyse Next-Generation Sequence (NGS) data of patients diagnosed with either cardiomyopathy or Medulloblastoma. Using this case...">
+<meta name="twitter:description" content="In this project you will learn the bioinformatic basics of how to analyse Next-Generation Sequence (NGS) data of patients diagnosed with either cardiomyopathy or Medulloblastoma. Using this case...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -60,12 +60,11 @@
 <span class="header-section-number">Week 1</span> Intro <em>NGS and Genetics</em> Project<a class="anchor" aria-label="anchor" href="#intro-ngs-and-genetics-project"><i class="fas fa-link"></i></a>
 </h1>
 <p>In this project you will learn the bioinformatic basics of how to
-analyse <em>Next-Generation Sequence</em> (NGS) data of of patients diagnosed with <a href="https://en.wikipedia.org/wiki/Cardiomyopathy">cardiomyopathy</a>. Using this
-case we will discover genetic variations that are in the genomic data of
-a patient having a suspected condition. The end-goal is to identify and
-report on those genomic variations that are possibly disease causing.
-All course material can be found in this document, some theory, a <em>lot</em>
-of links to resources, questions and assignments.</p>
+analyse <em>Next-Generation Sequence</em> (NGS) data of patients diagnosed with either <a href="https://en.wikipedia.org/wiki/Cardiomyopathy">cardiomyopathy</a> or <a href="https://en.wikipedia.org/wiki/Medulloblastoma">Medulloblastoma</a>. Using this case we will discover genetic variations that are in the genomic data of a patient having a suspected condition. The end-goal is to identify and report on those genomic variations that are possibly disease causing. All course material can be found in this document, some theory, a <em>lot</em> of links to resources, questions and assignments.</p>
+<div id="cardiomyopathy" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Cardiomyopathy<a class="anchor" aria-label="anchor" href="#cardiomyopathy"><i class="fas fa-link"></i></a>
+</h2>
 <div class="inline-figure">
 <img src="images/cardiomyopathy.png" width="554">
 As with many diseases, one of the causes of cardiomyopathy are a combination of genetic mutation(s). According to Wikipedia, the following forms of cardiomyopaty have a genetic base:</div>
@@ -81,6 +80,25 @@ As with many diseases, one of the causes of cardiomyopathy are a combination of 
 <strong>Restrictive</strong> cardiomyopathy (RCM)</li>
 </ul>
 <p>The human genetics department of the University Medical Center Groningen diagnoses patients suspected to suffer from cardiomyopathy. During the diagnosis, the patients genome is compared to a set of reference genes known to be involved in the disease (called a <em>gene panel</em>). If variations are found they are checked and compared to known variants to classify or score their <em>severity</em>. Using these variations the type (dilated, restrictive, etc.) of the disease and how severe it is can be diagnosed, combined with regular data sources (physical exam, EKG, etc.).</p>
+</div>
+<div id="medulloblastoma" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Medulloblastoma<a class="anchor" aria-label="anchor" href="#medulloblastoma"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Article:</li>
+<li>Data set:</li>
+<li>Gene panels:
+<ul>
+<li>#1: <a href="https://www.ncbi.nlm.nih.gov/gtr/tests/607978/" class="uri">https://www.ncbi.nlm.nih.gov/gtr/tests/607978/</a>
+</li>
+<li>#2: <a href="https://www.preventiongenetics.com/testInfo?val=Medulloblastoma-Panel" class="uri">https://www.preventiongenetics.com/testInfo?val=Medulloblastoma-Panel</a>
+</li>
+<li>#3: <a href="https://repositorium.sdum.uminho.pt/bitstream/1822/57968/1/Leal_et_al-2018-Neuropathology.pdf" class="uri">https://repositorium.sdum.uminho.pt/bitstream/1822/57968/1/Leal_et_al-2018-Neuropathology.pdf</a>
+</li>
+</ul>
+</li>
+</ul>
 <div class="rmdnote">
 <p>Investigate the case in more detail and log your findings. Report on the following:</p>
 <ul>
@@ -93,9 +111,10 @@ As with many diseases, one of the causes of cardiomyopathy are a combination of 
 reference genes known to be involved in the disease (called a <em>gene panel</em>). If variations are found they are checked and compared to known
 variants to classify or score their <em>severity</em>. Using these variations
 the disease can be detected and diagnosed.</p>
-<div id="tools" class="section level2" number="1.1">
+</div>
+<div id="tools" class="section level2" number="1.3">
 <h2>
-<span class="header-section-number">1.1</span> Tools<a class="anchor" aria-label="anchor" href="#tools"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.3</span> Tools<a class="anchor" aria-label="anchor" href="#tools"><i class="fas fa-link"></i></a>
 </h2>
 <p>In this project we will work with many different software tools to
 replicate the genetic diagnoses process, both available either for
@@ -137,9 +156,9 @@ researchers can use them!</p>
 how you can use it to analyze your data, but first we will introduce and
 discuss the data we will be working with.</p>
 </div>
-<div id="data" class="section level2" number="1.2">
+<div id="data" class="section level2" number="1.4">
 <h2>
-<span class="header-section-number">1.2</span> Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.4</span> Data<a class="anchor" aria-label="anchor" href="#data"><i class="fas fa-link"></i></a>
 </h2>
 <p>As a bioinformatician we often do not <em>create</em> the data we analyze
 ourselves but these come from a lab which - for this project - has a
@@ -181,9 +200,9 @@ so that we can compare the patients sequence to the sequence of a healthy
 individual. With this comparison we can find if and where any variation
 is and thus begin with answering our question.</p>
 </div>
-<div id="analysis" class="section level2" number="1.3">
+<div id="analysis" class="section level2" number="1.5">
 <h2>
-<span class="header-section-number">1.3</span> Analysis<a class="anchor" aria-label="anchor" href="#analysis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.5</span> Analysis<a class="anchor" aria-label="anchor" href="#analysis"><i class="fas fa-link"></i></a>
 </h2>
 <p>This course consists of a number of documents like this that should be
 worked through in-order. The first section of each of these documents
@@ -194,15 +213,24 @@ included.</p>
 does it contain too many assignments. This is on purpose since the goal
 of this week is primarily for you to understand:</p>
 <ul>
-<li>what the goal of this course is</li>
+<li>what the goal of this course is
+<ul>
 <li>what is the disease you are looking into?</li>
 <li>what question(s) do we want to answer?</li>
-<li>the tools we will be using</li>
+</ul>
+</li>
+<li>the tools we will be using
+<ul>
 <li>what is this Galaxy website? <em>follow a tutorial to get familiar with it</em>
 </li>
 <li>what kind of tools are available in Galaxy?</li>
-<li>the data which we will use throughout this course</li>
+</ul>
+</li>
+<li>the data which we will use throughout this course
+<ul>
 <li>how is this data generated?</li>
+</ul>
+</li>
 <li>which analysis steps are needed to answer our research question?</li>
 </ul>
 <div class="rmdnote">
@@ -212,14 +240,14 @@ assignments in the first chapter and complete them in under two hours
 answer or explain some of the above questions you will probably have a
 hard time. To summarize, make sure that the general theory of what is
 shown here is clear at the end of this chapter.</p>
-<p>Either follow all the links to external resources, use google or (and this works pretty well) search for some of the terms or techniques on Youtube. Without this knowledge, you will manage to follow the steps during the first few weeks but will surely struggle later on when you need to make decisions on your own. Your final grade is not based on how you complete your assignments, but also on the level of understanding that you show in your final presentation on the subject.</p>
+<p>Either follow all the links to external resources, use google or (and this works pretty well) search for some of the terms or techniques on Youtube. Without this knowledge, you will manage to follow the steps during the first few weeks but will surely struggle later on when you need to make decisions on your own. Your final grade is not based on how you complete your assignments, but also on the level of understanding that you show on your final poster.</p>
 </div>
 <p>We begin the practical of each new week (chapter) by first having a group discussing on what we did in the
 previous week.</p>
 </div>
-<div id="literature" class="section level2" number="1.4">
+<div id="literature" class="section level2" number="1.6">
 <h2>
-<span class="header-section-number">1.4</span> Literature<a class="anchor" aria-label="anchor" href="#literature"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.6</span> Literature<a class="anchor" aria-label="anchor" href="#literature"><i class="fas fa-link"></i></a>
 </h2>
 <p>There is no explicit book for the case or other text that you will need to read, but
 there is a lot of online material available to use when you encounter
@@ -230,16 +258,16 @@ Sequencing</a>’
 discusses the complete process of analyzing raw sequencing data for
 variant analysis and while it goes beyond the scope of this project it
 is a good read.</p>
-<p>Of course, the topics in the lectures to prepare you for the genetics exam are also the same topics you need to understand to be able to successfully complete the case.</p>
+<p>Besides this practical, the lectures from the Theory of Bioinformatics module also greatly add to your understanding of both the techniques, data and challenges we need to solve.</p>
 </div>
-<div id="reporting" class="section level2" number="1.5">
+<div id="reporting" class="section level2" number="1.7">
 <h2>
-<span class="header-section-number">1.5</span> Reporting<a class="anchor" aria-label="anchor" href="#reporting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.7</span> Reporting<a class="anchor" aria-label="anchor" href="#reporting"><i class="fas fa-link"></i></a>
 </h2>
 <p>To help you work trough these document and prepare you as best as
-possible for the final presentation it is best to keep track of all your
+possible for the poster presentation it is best to keep track of all your
 analysis steps and findings.</p>
-<p>As you will already have learned during the “Wetenschappelijke Cyclus”
+<p>As you will learn during the “Data Science and Visualization using R”
 module, a type of document called <a href="https://rmarkdown.rstudio.com">R
 Markdown</a> is very suitable for this
 purpose. In this document you can write a combination of text and code
@@ -251,17 +279,15 @@ not comparable with a normal written report (no chapters called
 state what you are doing and why this is important and where your
 results belong to. Do note however that when you use figures and tables
 (please do!), provide them with a clear caption to explain what you are
-showing. The logfile is not part of the grading (in the next module it
-will be!), here it is just a convenient way to keep track of all steps
-and results.</p>
+showing.</p>
 </div>
-<div id="assignments-week1" class="section level2" number="1.6">
+<div id="assignments-week-1" class="section level2" number="1.8">
 <h2>
-<span class="header-section-number">1.6</span> Assignments week1<a class="anchor" aria-label="anchor" href="#assignments-week1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.8</span> Assignments Week 1<a class="anchor" aria-label="anchor" href="#assignments-week-1"><i class="fas fa-link"></i></a>
 </h2>
-<div id="galaxy-server" class="section level3" number="1.6.1">
+<div id="galaxy-server" class="section level3" number="1.8.1">
 <h3>
-<span class="header-section-number">1.6.1</span> Galaxy Server<a class="anchor" aria-label="anchor" href="#galaxy-server"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.8.1</span> Galaxy Server<a class="anchor" aria-label="anchor" href="#galaxy-server"><i class="fas fa-link"></i></a>
 </h3>
 <p>This is the main ‘tool’ (or (web)platform)
 containing the <em>actual</em> tools for performing our analysis we will use during this course.
@@ -272,9 +298,9 @@ The main galaxy server is available at <a href="https://usegalaxy.org" class="ur
 fine for learning about galaxy (section below) but <strong>won’t</strong> be used
 later on (see the section below that) and you do <strong>not</strong> have to
 register on that server.</p>
-<div id="learning-galaxy" class="section level4" number="1.6.1.1">
+<div id="learning-galaxy" class="section level4" number="1.8.1.1">
 <h4>
-<span class="header-section-number">1.6.1.1</span> Learning Galaxy<a class="anchor" aria-label="anchor" href="#learning-galaxy"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.8.1.1</span> Learning Galaxy<a class="anchor" aria-label="anchor" href="#learning-galaxy"><i class="fas fa-link"></i></a>
 </h4>
 <p>Start by following a beginner <em>tutorial</em> available at the <a href="https://galaxyproject.github.io/training-material/">Galaxy
 Training</a> collection
@@ -286,22 +312,33 @@ need to learn at least the following concepts:</p>
 <ul>
 <li>Creating a new history or rename your current - empty - history</li>
 <li>Uploading data from a local file</li>
-<li>Finding/ selecting a tool</li>
+<li>Finding/ selecting a tool
+<ul>
 <li>Selecting the input data for a tool</li>
 <li>changing settings for a tool</li>
 <li>Executing a tool</li>
-<li>Using the History to View tool-output</li>
+</ul>
+</li>
+<li>Using the History to
+<ul>
+<li>View tool-output</li>
 <li>Re-run a tool</li>
 <li>Delete elements</li>
 <li>Select and copy elements to a new history</li>
-<li>And - preferably - something about creating a workflow (This item will be explained later on too)</li>
+</ul>
+</li>
+<li>And - preferably - something about creating a workflow
+<ul>
+<li>This item will be explained later on too</li>
+</ul>
+</li>
 </ul>
 <p>You only need to report <em>which</em> tutorial you followed/ video tutorial
 you watched.</p>
 </div>
-<div id="bioinformatics-galaxy-server" class="section level4" number="1.6.1.2">
+<div id="bioinformatics-galaxy-server" class="section level4" number="1.8.1.2">
 <h4>
-<span class="header-section-number">1.6.1.2</span> Bioinformatics Galaxy Server<a class="anchor" aria-label="anchor" href="#bioinformatics-galaxy-server"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.8.1.2</span> Bioinformatics Galaxy Server<a class="anchor" aria-label="anchor" href="#bioinformatics-galaxy-server"><i class="fas fa-link"></i></a>
 </h4>
 <p>After completing this tutorial, we switch to the Galaxy server that we
 will use throughout this course which is available at:
@@ -320,13 +357,11 @@ simply enter the name in the <em>search tools</em> field in the top-left
 corner.</p>
 </div>
 </div>
-<div id="data-and-quality-control" class="section level3" number="1.6.2">
+<div id="data-and-quality-control" class="section level3" number="1.8.2">
 <h3>
-<span class="header-section-number">1.6.2</span> data and quality control<a class="anchor" aria-label="anchor" href="#data-and-quality-control"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.8.2</span> data and quality control<a class="anchor" aria-label="anchor" href="#data-and-quality-control"><i class="fas fa-link"></i></a>
 </h3>
-<p>For this project we have “simulated” patient data from a single patient
-with the suspected disease you are investigating. The patient data
-consists of next-generation Illumina MiSeq reads from captured exomes
+<p>For this project we have patient data from a patients with the suspected disease you are investigating. The patient data consists of next-generation Illumina reads (MiSeq or NextSeq) from captured exomes
 for a panel of a given size (small number of genes). For example, when
 looking at the gene panel used to diagnose the hearth disease
 cardiomyopathy there is sequence data available on “only” 55 genes out
@@ -338,9 +373,9 @@ these 55 genes is about 320,000 bases. Which again, is just a very small
 fraction of the complete exome lenght.</p>
 <div class="inline-figure"><img src="images/genepanel.png" width="422"></div>
 </div>
-<div id="fastq-format" class="section level3" number="1.6.3">
+<div id="fastq-format" class="section level3" number="1.8.3">
 <h3>
-<span class="header-section-number">1.6.3</span> FASTQ format<a class="anchor" aria-label="anchor" href="#fastq-format"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.8.3</span> FASTQ format<a class="anchor" aria-label="anchor" href="#fastq-format"><i class="fas fa-link"></i></a>
 </h3>
 <p>As mentioned before, a great portion of the data produced in
 computational biology is from so called <em>Next-Generation Sequencers</em>.
@@ -609,36 +644,23 @@ Base call accuracy 1 - P
 </tr>
 </tbody></table></div>
 </div>
-<div id="quality-control" class="section level3" number="1.6.4">
+<div id="quality-control" class="section level3" number="1.8.4">
 <h3>
-<span class="header-section-number">1.6.4</span> Quality Control<a class="anchor" aria-label="anchor" href="#quality-control"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.8.4</span> Quality Control<a class="anchor" aria-label="anchor" href="#quality-control"><i class="fas fa-link"></i></a>
 </h3>
 <p>We need to load the patient data you are going to work on during this
-project. All patient data is already on the server and you first need
+project. All patient data is stored on the network and you first need
 to load it into your Galaxy <strong>History</strong> to work with. To do
-this first go to the <strong>Shared Data</strong> menu and click on
-<strong>Data Libraries</strong></p>
-<div class="inline-figure"><img src="images/dataLibrariesMenu.png" width="510"></div>
-<div class="inline-figure"><img src="images/patientDataMenu.png" width="507"></div>
-<p>Open the <code>patientData</code> library. Here you will find the sequence data
-from different cases, each named by the disease TODO: new screenshot depicting the cases. As you can see each case
+this click on the ‘Upload Data’ button and next on the ‘Choose local files’ button at the bottom of the popup. Here, you can browse to the folder on the network that contain all samples which is: <code>/commons/Themas/Minor01/samples</code>
+Note that for Cardiomyopathy, use the <code>CM-DNASeq</code> folder and for Medulloblastoma, use the <code>MB-DNASeq</code> folder.</p>
+<p>As you can see each case
 consists of two files. This is because the forward and reverse reads are
-split up into two files (<em>paired-end sequencing</em>). The files with <strong>R1</strong>
-in the name are the forward reads and the reverse reads have <strong>R2</strong> in
+split up into two files (<em>paired-end sequencing</em>). The files with <strong>R1</strong> or <strong>_1</strong> in the name are the forward reads and the reverse reads have <strong>R2</strong> or <strong>_2</strong> in
 their name, remember this as some tools require to select the proper
 file.</p>
-<p>If for example <code>Alzheimer</code> is your disease case, you can select both
-read files for <code>Alzheimer</code>. Check the boxes for the R1 and R2 of Sample1
-and click the <strong>Download</strong> button at the top, chose a file
-extension (doesn’t matter) which starts the download. Next, open the
-Linux file browser and navigate to your <code>Downloads</code> folder. Extract the
-downloaded archive file resulting in two new archived files (in the
-<code>.fastq.gz</code> format which means the files are compressed using <code>gzip</code>).
-In Galaxy, create a new history or open the default one and in the
-<code>Tools</code> menu click on the <code>Get Data</code> and <code>Upload File</code> links. Either
-drag or select both <code>SampleX_xxxxx.fastq.gz</code> files to get them ready for
-the upload but don’t upload just yet.</p>
-<p>Galaxy automatically tries to detect the file format that you will add
+<p>If for example <code>Medulloblastoma</code> is your disease case, you can select both
+read files from a <code>Medulloblastoma</code> sample, such as <code>SRR29613194</code>.
+Galaxy automatically tries to detect the file format that you will add
 to a history, most often using it’s file extension. In this case, we
 need to make sure that Galaxy has the proper format selected which is
 <code>fastqsanger</code>. The Sanger part of this format refers to the phred
@@ -647,32 +669,31 @@ methods. Without the correct data type a tool such as <code>FastQC</code> (see
 below) doesn’t know when a read is of sufficient quality or worse,
 qualifies reads incorrectly. Select the proper type from the drop-down
 menu and upload the files.</p>
-<div class="inline-figure"><img src="images/patientData.png" width="1240"></div>
 <p>After you have uploaded the sequence data in your history it is
 available to work on. If all went correct, you should now see the two
 sequence files in your History of Galaxy.</p>
 <div class="inline-figure"><img src="images/historyPatient.png" width="1060"></div>
-<pre><code>Note for FireFox users:
-
-At some point you might see an error page when *viewing* the contents of
-a file in Galaxy (by clicking on the `eye`-icon in the history. This
+<div class="rmdnote">
+<p>Note for FireFox users:</p>
+<p>At some point you might see an error page when <em>viewing</em> the contents of
+a file in Galaxy (by clicking on the <code>eye</code>-icon in the history. This
 error can be fixed by changing one of the security settings of your
-browser. You can do this by typing &lt;strong&gt;&lt;about:config&gt;&lt;/strong&gt; in
+browser. You can do this by typing <strong><a href="about:config" class="uri">about:config</a></strong> in
 the url bar. In the options you are presented with, search for:
-&lt;strong&gt;network.http.accept-encoding&lt;/strong&gt;. Right click and select
-&lt;strong&gt;Modify&lt;/strong&gt;. Remove the text that is there and change it to
-&lt;strong&gt;\*&lt;/strong&gt;. If you don't see this error there is no need for
-changing this setting.
-
-Every time a dataset is loaded into the *history* panel (from a manual
+<strong>network.http.accept-encoding</strong>. Right click and select
+<strong>Modify</strong>. Remove the text that is there and change it to
+<strong>*</strong>. If you don’t see this error there is no need for
+changing this setting.</p>
+<p>Every time a dataset is loaded into the <em>history</em> panel (from a manual
 action, like we just did or from the output of a tool), you can have a
 quick look by clicking on the name of the dataset. In this case it will
 show you the first read (and a bit..) of the loaded library. A couple of
-actions can be taken on each item in your History such as *View Data,
-Edit Attributes* and *Delete*. When you click on the name of an item in
+actions can be taken on each item in your History such as <em>View Data,
+Edit Attributes</em> and <em>Delete</em>. When you click on the name of an item in
 the History additional actions such as downloading the data, viewing the
 Galaxy (job) background information or visualising the data appear. Go
-ahead poke the `eye`-button now and have a look at the raw data</code></pre>
+ahead poke the <code>eye</code>-button now and have a look at the raw data</p>
+</div>
 <p>When you start to analyse NGS data it is very important to get a feeling
 for the data. What does the data look like? What is the quality of my
 data? You do not (although you <em>can</em>) want to draw conclusions on low
@@ -681,9 +702,8 @@ would first need to identify what is wrong with the data. To look at
 many (quality) aspects of our imported datasets, we are going to start a
 tool named
 <a href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/"><strong>FastQC</strong></a>.
-In the <strong>Tools</strong> panel, open the <strong>Diagnostic Genome
-Analysis</strong> category and click on the <strong>FastQC</strong>
-tool. The settings of the FastQC tool should appear in the middle
+In the <strong>Tools</strong> panel, search for the <strong>FastQC</strong>
+tool (can also be found under the <code>FASTQ Quality Control</code> section. The settings of the FastQC tool should appear in the middle
 section. A help is usually shown when you open a tool as well as the
 scientific literature associated with the tool for further references.
 For the FastQC tool we can load short read data from our history. Also a
@@ -750,10 +770,15 @@ R2 files.</li>
 <li>Perform an <em>initial IlluminaCLIP</em> step and select the
 <em>TruSeq3 (paired-ended, for miSeq and HiSeq)</em> adapters.</li>
 <li>From the <em>Trimmomatic operation</em> select the Sliding window trimming and choose 4
-bases to average across, the quality should be 20 (as a minimum).</li>
+bases to average across, the quality should be 20 (as a minimum).
+<ul>
 <li>Click on the plus sign (<em>Insert Trimmomatic Operation</em> button) and
-Select the <em>Drop reads below a specified length</em> Set the minimum read
+Select the <em>Drop reads below a specified length</em>
+</li>
+<li>Set the minimum read
 length to <strong>70</strong> (can you think of a reason why you do not want to have too many short reads?)</li>
+</ul>
+</li>
 <li>Execute the tool.</li>
 </ul>
 <div class="inline-figure"><img src="images/trimmomatic.png" width="510"></div>
@@ -810,17 +835,19 @@ marked for actual deletion after a few months.</li>
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#intro-ngs-and-genetics-project"><span class="header-section-number">1</span> Intro NGS and Genetics Project</a></li>
-<li><a class="nav-link" href="#tools"><span class="header-section-number">1.1</span> Tools</a></li>
-<li><a class="nav-link" href="#data"><span class="header-section-number">1.2</span> Data</a></li>
-<li><a class="nav-link" href="#analysis"><span class="header-section-number">1.3</span> Analysis</a></li>
-<li><a class="nav-link" href="#literature"><span class="header-section-number">1.4</span> Literature</a></li>
-<li><a class="nav-link" href="#reporting"><span class="header-section-number">1.5</span> Reporting</a></li>
+<li><a class="nav-link" href="#cardiomyopathy"><span class="header-section-number">1.1</span> Cardiomyopathy</a></li>
+<li><a class="nav-link" href="#medulloblastoma"><span class="header-section-number">1.2</span> Medulloblastoma</a></li>
+<li><a class="nav-link" href="#tools"><span class="header-section-number">1.3</span> Tools</a></li>
+<li><a class="nav-link" href="#data"><span class="header-section-number">1.4</span> Data</a></li>
+<li><a class="nav-link" href="#analysis"><span class="header-section-number">1.5</span> Analysis</a></li>
+<li><a class="nav-link" href="#literature"><span class="header-section-number">1.6</span> Literature</a></li>
+<li><a class="nav-link" href="#reporting"><span class="header-section-number">1.7</span> Reporting</a></li>
 <li>
-<a class="nav-link" href="#assignments-week1"><span class="header-section-number">1.6</span> Assignments week1</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#galaxy-server"><span class="header-section-number">1.6.1</span> Galaxy Server</a></li>
-<li><a class="nav-link" href="#data-and-quality-control"><span class="header-section-number">1.6.2</span> data and quality control</a></li>
-<li><a class="nav-link" href="#fastq-format"><span class="header-section-number">1.6.3</span> FASTQ format</a></li>
-<li><a class="nav-link" href="#quality-control"><span class="header-section-number">1.6.4</span> Quality Control</a></li>
+<a class="nav-link" href="#assignments-week-1"><span class="header-section-number">1.8</span> Assignments Week 1</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#galaxy-server"><span class="header-section-number">1.8.1</span> Galaxy Server</a></li>
+<li><a class="nav-link" href="#data-and-quality-control"><span class="header-section-number">1.8.2</span> data and quality control</a></li>
+<li><a class="nav-link" href="#fastq-format"><span class="header-section-number">1.8.3</span> FASTQ format</a></li>
+<li><a class="nav-link" href="#quality-control"><span class="header-section-number">1.8.4</span> Quality Control</a></li>
 </ul>
 </li>
 </ul>
@@ -840,7 +867,7 @@ marked for actual deletion after a few months.</li>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Case background information and exercises</strong>" was written by Marcel Kempenaar and Ronald Wedema. It was last built on 2023-10-12.</p>
+    <p>"<strong>Case background information and exercises</strong>" was written by Marcel Kempenaar and Ronald Wedema. It was last built on 2024-02-12.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
