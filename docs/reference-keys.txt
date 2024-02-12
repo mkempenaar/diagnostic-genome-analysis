@@ -1,7 +1,3 @@
-learning-outcomes
-end-products
-rubric
-schedule-and-deliverables
 intro-ngs-and-genetics-project
 cardiomyopathy
 medulloblastoma
