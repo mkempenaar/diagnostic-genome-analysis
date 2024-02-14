@@ -17,32 +17,24 @@ As with many diseases, one of the causes of cardiomyopathy are a combination of 
 * **Dilated** cardiomyopathy (DCM)
 * **Restrictive** cardiomyopathy (RCM)
 
-The human genetics department of the University Medical Center Groningen diagnoses patients suspected to suffer from cardiomyopathy. During the diagnosis, the patients genome is compared to a set of reference genes known to be involved in the disease (called a *gene panel*). If variations are found they are checked and compared to known variants to classify or score their *severity*. Using these variations the type (dilated, restrictive, etc.) of the disease and how severe it is can be diagnosed, combined with regular data sources (physical exam, EKG, etc.).
+The human genetics department of the University Medical Center Groningen diagnoses patients suspected to suffer from cardiomyopathy. As part of the diagnosis, the patients genome is compared to a set of reference genes known to be involved in the disease (called a *gene panel*). If variations are found they are checked and compared to known variants to classify or score their *severity*. Using these variations the type (dilated, restrictive, etc.) of the disease and how severe it is can be diagnosed, combined with regular data sources (physical exam, EKG, etc.).
 
 ## Medulloblastoma
 
-* Article: 
-* Data set:
-* Gene panels:
+Medulloblastoma is a type of brain cancer that occurs most often in children and is also the most common type of cancer in children. The cancer starts in the lower back part of the brain, called the cerebellum. The cerebellum is involved in muscle coordination, balance, and movement. It is a type of embryonal tumor, which means it starts in the fetal (embryonic) cells in the brain. The cancer cells are immature and often look like embryonic cells under a microscope. The cancer can spread to other areas of the brain and spinal cord. The cause of medulloblastoma is not known. It is not caused by head injury or exposure to radiation. It is not passed down through families. The cancer is more common in children with a weakened immune system and certain genetic problems, such as Gorlin syndrome or Turcot syndrome. 
+
+The article accompanying the available data set specifies that there are multiple subtypes. This project aims to identify the subtypes of the available samples.
+"Traditionally, MB has been stratified into four histopathological subtypes based on histological appearance: Classic, Large Cell/Anaplastic, Desmoplastic/Nodular (DNMB) and MB with Extensive Nodularity (MBEN)3,4. Additionally, in the last decade, four molecular groups (WNT, SHH, Group 3, and Group 4) together with various subgroups have been defined and now generally replace the classic histopathological stratification in the 2021 WHO classification of central nervous system (CNS) tumors"
+
+* Article: "*Compartments in medulloblastoma with extensive nodularity are connected through differentiation along the granular precursor lineage*"; https://www.nature.com/articles/s41467-023-44117-x
+* Data set: https://www.ncbi.nlm.nih.gov/biosample?LinkName=bioproject_biosample_all&from_uid=1044021
+* Data acquisition: "Libraries were enriched by hybrid capture with custom biotinylated RNA oligo pools covering exons of 130 cancer-associated genes. Paired-end sequencing was performed using the NextSeq 500 (Illumina)."
+* Gene panels (all listed genes are included in the BED-file available in Galaxy):
   - #1: https://www.ncbi.nlm.nih.gov/gtr/tests/607978/
   - #2: https://www.preventiongenetics.com/testInfo?val=Medulloblastoma-Panel
   - #3: https://repositorium.sdum.uminho.pt/bitstream/1822/57968/1/Leal_et_al-2018-Neuropathology.pdf
 
-
-
-::: {.rmdnote}
-Investigate the case in more detail and log your findings. Report on the following:
-
-* What is the impact of the disease for the patient 
-* Is there just one type of the disease or can it be divided into multiple categories 
-* Are there known genes involved and is the association backed-up by the scientific literature
-
-:::
-
-During the diagnosis, the patients genome is compared to a set of
-reference genes known to be involved in the disease (called a *gene panel*). If variations are found they are checked and compared to known
-variants to classify or score their *severity*. Using these variations
-the disease can be detected and diagnosed.
+Note that the article specifies 130 cancer-associated genes but does not refer to this list. The links above add up to 122 genes in total for genes related to (multiple types of) cancer. Subsequent data analysis will have to be performed to identify the genes that are actually captured for the exome sequencing.
 
 ## Tools
 
@@ -172,20 +164,11 @@ shown here is clear at the end of this chapter.
 Either follow all the links to external resources, use google or (and this works pretty well) search for some of the terms or techniques on Youtube. Without this knowledge, you will manage to follow the steps during the first few weeks but will surely struggle later on when you need to make decisions on your own. Your final grade is not based on how you complete your assignments, but also on the level of understanding that you show on your final poster.
 :::
 
-We begin the practical of each new week (chapter) by first having a group discussing on what we did in the
-previous week.
+We begin the practical of each new week by first having a group discussing on what we did in the previous week.
 
 ## Literature
 
-There is no explicit book for the case or other text that you will need to read, but
-there is a lot of online material available to use when you encounter
-unknown terms or concepts. The article titled '[Review of Current
-Methods, Applications, and Data Management for the Bioinformatics
-Analysis of Whole Exome
-Sequencing](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4179624/)'
-discusses the complete process of analyzing raw sequencing data for
-variant analysis and while it goes beyond the scope of this project it
-is a good read.
+There is no explicit book for the case or other text that you will need to read, but there is a lot of online material available to use when you encounter unknown terms or concepts. The article titled '[Review of Current Methods, Applications, and Data Management for the Bioinformatics Analysis of Whole Exome Sequencing](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4179624/)' discusses the complete process of analyzing raw sequencing data for variant analysis and while it goes beyond the scope of this project it is a good read.
 
 Besides this practical, the lectures from the Theory of Bioinformatics module also greatly add to your understanding of both the techniques, data and challenges we need to solve.
 
@@ -262,38 +245,19 @@ tools.
 knitr::include_graphics("images/galaxyServer.png")
 ```
 
-```{r, echo=FALSE}
-knitr::include_graphics("images/galaxyTools.png")
-```
+The Galaxy server that we host ourselves is different from the one that you've used for the tutorial. Different in this sense means containing a different collection of available software tools. Most of the tools that we will be using in this course can be found using the `search tools` input field, which can be found at the top left corner of Galaxy. 
 
-The Galaxy server 
-that we host ourselves is different from the one that you've used for
-the tutorial. Different in this sense means containing a different
-collection of available software tools. Most of the tools that we will
-be using in this course can be found using the `search tools` input field, which can be found at the top left corner of Galaxy.
+Some tools however were installed in bundles and have their own category and therefore the easiest method of finding the tool you need is to simply enter the name in the *search tools* field in the top-left corner.
 
-Some tools however were installed in bundles and have their own category
-and therefore the easiest method of finding the tool you need is to
-simply enter the name in the *search tools* field in the top-left
-corner.
+### Data and quality control
 
-### data and quality control
+For this project we have patient data from a patient with the suspected disease you are investigating. The patient data consists of next-generation Illumina reads (MiSeq or NextSeq) from captured exomes for a panel of a given size (small number of genes). For example, when looking at the gene panel used to diagnose the hearth disease cardiomyopathy there is sequence data available on "only" 55 genes out of the 26k genes. (CARDIO panel, see table and the [NCBI](https://www.ncbi.nlm.nih.gov/gtr/tests/GTR000500470/overview/) product page - note that it only lists 51 of them) which are likely involved in the disease. The total length of the captured exomes for these 55 genes is about 320,000 bases. Which again, is just a very small fraction of the complete exome lenght.
 
-For this project we have patient data from a patients with the suspected disease you are investigating. The patient data consists of next-generation Illumina reads (MiSeq or NextSeq) from captured exomes
-for a panel of a given size (small number of genes). For example, when
-looking at the gene panel used to diagnose the hearth disease
-cardiomyopathy there is sequence data available on "only" 55 genes out
-of the 26k genes. (CARDIO panel, see table and the
-[NCBI](https://www.ncbi.nlm.nih.gov/gtr/tests/GTR000500470/overview/)
-product page - note that it only lists 51 of them) which are likely
-involved in the disease. The total length of the captured exomes for
-these 55 genes is about 320,000 bases. Which again, is just a very small
-fraction of the complete exome lenght.
+The first step will be a thorough quality check of the available data, for which we first need to take a close look at the data format being used.
 
 ```{r, echo=FALSE}
 knitr::include_graphics("images/genepanel.png")
 ```
-
 
 ### FASTQ format
 
@@ -465,17 +429,9 @@ Complete the table below.
 
 ### Quality Control
 
-We need to load the patient data you are going to work on during this
-project. All patient data is stored on the network and you first need
-to load it into your Galaxy <strong>History</strong> to work with. To do
-this click on the 'Upload Data' button and next on the 'Choose local files' button at the bottom of the popup. Here, you can browse to the folder on the network that contain all samples which is: `/commons/Themas/Minor01/samples`
-Note that for Cardiomyopathy, use the `CM-DNASeq` folder and for Medulloblastoma, use the `MB-DNASeq` folder.
+We need to load the patient data you are going to work on during this project. All patient data is stored on the network and you first need to load it into your Galaxy <strong>History</strong> to work with. To do this click on the 'Upload Data' button and next on the 'Choose local files' button at the bottom of the popup. Here, you can browse to the folder on the network that contain all samples which is: `/commons/Themas/Minor01/samples` Note that for Cardiomyopathy, use the `CM-DNASeq` folder and for Medulloblastoma, use the `MB-DNASeq` folder.
 
-As you can see each case
-consists of two files. This is because the forward and reverse reads are
-split up into two files (*paired-end sequencing*). The files with **R1** or **\_1** in the name are the forward reads and the reverse reads have **R2** or **\_2** in
-their name, remember this as some tools require to select the proper
-file.
+As you can see each case consists of two files. This is because the forward and reverse reads are split up into two files (*paired-end sequencing*). The files with **R1** or **\_1** in the name are the forward reads and the reverse reads have **R2** or **\_2** in their name, remember this as some tools require to select the proper file.
 
 If for example `Medulloblastoma` is your disease case, you can select both
 read files from a `Medulloblastoma` sample, such as `SRR29613194`. 

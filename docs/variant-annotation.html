@@ -1,81 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="" xml:lang="">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Week 4 Variant Annotation | Case background information and exercises</title>
-<meta name="author" content="Marcel Kempenaar and Ronald Wedema">
-<meta name="generator" content="bookdown 0.36 with bs4_book()">
-<meta property="og:title" content="Week 4 Variant Annotation | Case background information and exercises">
-<meta property="og:type" content="book">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Week 4 Variant Annotation | Case background information and exercises">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.5.1/transition.js"></script><script src="libs/bs3compat-0.5.1/tabs.js"></script><script src="libs/bs3compat-0.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
-    
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  </style>
-<link rel="stylesheet" href="style.css">
-<meta name="description" content="In the - for now - final Galaxy workflow step for analyzing our patient, we are going to annotate all our filtered variants to determine the severity of the variations we determined last time with...">
-<meta property="og:description" content="In the - for now - final Galaxy workflow step for analyzing our patient, we are going to annotate all our filtered variants to determine the severity of the variations we determined last time with...">
-<meta name="twitter:description" content="In the - for now - final Galaxy workflow step for analyzing our patient, we are going to annotate all our filtered variants to determine the severity of the variations we determined last time with...">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Week 4 Variant Annotation | Case background information and exercises</title>
+  <meta name="description" content="Week 4 Variant Annotation | Case background information and exercises" />
+  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Week 4 Variant Annotation | Case background information and exercises" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://github.com/mkempenaar/diagnostic-genome-analysis" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Week 4 Variant Annotation | Case background information and exercises" />
+  
+  
+  
+
+<meta name="author" content="Marcel Kempenaar and Ronald Wedema" />
+
+
+<meta name="date" content="2024-02-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="analysis-of-cardiopanel-variants.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
-<body data-spy="scroll" data-target="#toc">
 
-<div class="container-fluid">
-<div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<body>
 
-    <div class="d-flex align-items-start justify-content-between">
-      <h1>
-        <a href="index.html" title="">Case background information and exercises</a>
-      </h1>
-      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#usage"><i class="fa fa-check"></i>Usage</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro-ngs-and-genetics-project.html"><a href="intro-ngs-and-genetics-project.html"><i class="fa fa-check"></i><b>1</b> Intro <em>NGS and Genetics</em> Project</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro-ngs-and-genetics-project.html"><a href="intro-ngs-and-genetics-project.html#cardiomyopathy"><i class="fa fa-check"></i><b>1.1</b> Cardiomyopathy</a></li>
+<li class="chapter" data-level="1.2" data-path="intro-ngs-and-genetics-project.html"><a href="intro-ngs-and-genetics-project.html#medulloblastoma"><i class="fa fa-check"></i><b>1.2</b> Medulloblastoma</a></li>
+<li class="chapter" data-level="1.3" data-path="intro-ngs-and-genetics-project.html"><a href="intro-ngs-and-genetics-project.html#tools"><i class="fa fa-check"></i><b>1.3</b> Tools</a></li>
+<li class="chapter" data-level="1.4" data-path="intro-ngs-and-genetics-project.html"><a href="intro-ngs-and-genetics-project.html#data"><i class="fa fa-check"></i><b>1.4</b> Data</a></li>
+<li class="chapter" data-level="1.5" data-path="intro-ngs-and-genetics-project.html"><a href="intro-ngs-and-genetics-project.html#analysis"><i class="fa fa-check"></i><b>1.5</b> Analysis</a></li>
+<li class="chapter" data-level="1.6" data-path="intro-ngs-and-genetics-project.html"><a href="intro-ngs-and-genetics-project.html#literature"><i class="fa fa-check"></i><b>1.6</b> Literature</a></li>
+<li class="chapter" data-level="1.7" data-path="intro-ngs-and-genetics-project.html"><a href="intro-ngs-and-genetics-project.html#reporting"><i class="fa fa-check"></i><b>1.7</b> Reporting</a></li>
+<li class="chapter" data-level="1.8" data-path="intro-ngs-and-genetics-project.html"><a href="intro-ngs-and-genetics-project.html#assignments-week-1"><i class="fa fa-check"></i><b>1.8</b> Assignments Week 1</a>
+<ul>
+<li class="chapter" data-level="1.8.1" data-path="intro-ngs-and-genetics-project.html"><a href="intro-ngs-and-genetics-project.html#galaxy-server"><i class="fa fa-check"></i><b>1.8.1</b> Galaxy Server</a></li>
+<li class="chapter" data-level="1.8.2" data-path="intro-ngs-and-genetics-project.html"><a href="intro-ngs-and-genetics-project.html#data-and-quality-control"><i class="fa fa-check"></i><b>1.8.2</b> Data and quality control</a></li>
+<li class="chapter" data-level="1.8.3" data-path="intro-ngs-and-genetics-project.html"><a href="intro-ngs-and-genetics-project.html#fastq-format"><i class="fa fa-check"></i><b>1.8.3</b> FASTQ format</a></li>
+<li class="chapter" data-level="1.8.4" data-path="intro-ngs-and-genetics-project.html"><a href="intro-ngs-and-genetics-project.html#quality-control"><i class="fa fa-check"></i><b>1.8.4</b> Quality Control</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="read-mapping.html"><a href="read-mapping.html"><i class="fa fa-check"></i><b>2</b> Read Mapping</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="read-mapping.html"><a href="read-mapping.html#mapping-with-bwa"><i class="fa fa-check"></i><b>2.1</b> Mapping with BWA</a></li>
+<li class="chapter" data-level="2.2" data-path="read-mapping.html"><a href="read-mapping.html#assignment-week-2"><i class="fa fa-check"></i><b>2.2</b> Assignment week 2</a></li>
+<li class="chapter" data-level="2.3" data-path="read-mapping.html"><a href="read-mapping.html#marking-duplicate-mapped-reads"><i class="fa fa-check"></i><b>2.3</b> Marking Duplicate Mapped Reads</a></li>
+<li class="chapter" data-level="2.4" data-path="read-mapping.html"><a href="read-mapping.html#visualizing-the-mapping-data"><i class="fa fa-check"></i><b>2.4</b> Visualizing the Mapping Data</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html"><i class="fa fa-check"></i><b>3</b> Analysis of Cardiopanel Variants</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#assignment-week-3"><i class="fa fa-check"></i><b>3.1</b> Assignment week 3</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#programming-assignments-coverage-overview-for-cardiopanel-genes"><i class="fa fa-check"></i><b>3.1.1</b> Programming Assignments; Coverage Overview for Cardiopanel Genes</a></li>
+<li class="chapter" data-level="3.1.2" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#assignment-instructions"><i class="fa fa-check"></i><b>3.1.2</b> Assignment Instructions</a></li>
+<li class="chapter" data-level="3.1.3" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#assignment-1-loading-the-bed-data"><i class="fa fa-check"></i><b>3.1.3</b> Assignment 1; Loading the BED-data</a></li>
+<li class="chapter" data-level="3.1.4" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#assignment-2-bed-visualization"><i class="fa fa-check"></i><b>3.1.4</b> Assignment 2; BED-visualization</a></li>
+<li class="chapter" data-level="3.1.5" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#assignment-3-bioconductor"><i class="fa fa-check"></i><b>3.1.5</b> Assignment 3; Bioconductor</a></li>
+<li class="chapter" data-level="3.1.6" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#assignment-4-gene-lengths"><i class="fa fa-check"></i><b>3.1.6</b> Assignment 4; Gene Lengths</a></li>
+<li class="chapter" data-level="3.1.7" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#assignment-5-loading-the-mapped-reads"><i class="fa fa-check"></i><b>3.1.7</b> Assignment 5; Loading the Mapped Reads</a></li>
+<li class="chapter" data-level="3.1.8" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#rsamtools"><i class="fa fa-check"></i><b>3.1.8</b> Rsamtools</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#assignment-6-pileup-processing"><i class="fa fa-check"></i><b>3.2</b> Assignment 6; Pileup Processing</a></li>
+<li class="chapter" data-level="3.3" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#assignment-7-coverage-calculation-and-reporting"><i class="fa fa-check"></i><b>3.3</b> Assignment 7; Coverage calculation and reporting</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#hints"><i class="fa fa-check"></i><b>3.3.1</b> Hints</a></li>
+<li class="chapter" data-level="3.3.2" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#end-result"><i class="fa fa-check"></i><b>3.3.2</b> End Result</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#finding-variants-using-lofreq"><i class="fa fa-check"></i><b>3.4</b> Finding Variants using <code>LoFreq</code></a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#vcf-file-filtering"><i class="fa fa-check"></i><b>3.4.1</b> VCF File Filtering</a></li>
+<li class="chapter" data-level="3.4.2" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#assignment-8-vcf-file-processing"><i class="fa fa-check"></i><b>3.4.2</b> Assignment 8; VCF File Processing</a></li>
+<li class="chapter" data-level="3.4.3" data-path="analysis-of-cardiopanel-variants.html"><a href="analysis-of-cardiopanel-variants.html#assignment-9-variant-visualization"><i class="fa fa-check"></i><b>3.4.3</b> Assignment 9; Variant Visualization</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="variant-annotation.html"><a href="variant-annotation.html"><i class="fa fa-check"></i><b>4</b> Variant Annotation</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="variant-annotation.html"><a href="variant-annotation.html#snpeff-and-snpsift"><i class="fa fa-check"></i><b>4.1</b> SnpEff and SnpSift</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="variant-annotation.html"><a href="variant-annotation.html#assignment"><i class="fa fa-check"></i><b>4.1.1</b> Assignment</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="variant-annotation.html"><a href="variant-annotation.html#programming-assignment-analyzing-variant-annotation"><i class="fa fa-check"></i><b>4.2</b> Programming Assignment; Analyzing Variant Annotation</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="variant-annotation.html"><a href="variant-annotation.html#assignment-10-data-preparation"><i class="fa fa-check"></i><b>4.2.1</b> Assignment 10; Data Preparation</a></li>
+<li class="chapter" data-level="4.2.2" data-path="variant-annotation.html"><a href="variant-annotation.html#assignment-11-finding-variants-of-interest"><i class="fa fa-check"></i><b>4.2.2</b> Assignment 11; Finding Variants of Interest</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="variant-annotation.html"><a href="variant-annotation.html#galaxy-workflow"><i class="fa fa-check"></i><b>4.3</b> Galaxy Workflow</a></li>
+<li class="chapter" data-level="4.4" data-path="variant-annotation.html"><a href="variant-annotation.html#comparative-genomics"><i class="fa fa-check"></i><b>4.4</b> Comparative Genomics</a></li>
+<li class="chapter" data-level="4.5" data-path="variant-annotation.html"><a href="variant-annotation.html#galaxy-data-cleanup"><i class="fa fa-check"></i><b>4.5</b> Galaxy Data Cleanup</a></li>
+</ul></li>
+</ul>
+
+      </nav>
     </div>
 
-    <div id="main-nav" class="collapse-lg">
-      <form role="search">
-        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
-
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">About</a></li>
-<li><a class="" href="intro-ngs-and-genetics-project.html"><span class="header-section-number">1</span> Intro NGS and Genetics Project</a></li>
-<li><a class="" href="read-mapping.html"><span class="header-section-number">2</span> Read Mapping</a></li>
-<li><a class="" href="analysis-of-cardiopanel-variants.html"><span class="header-section-number">3</span> Analysis of Cardiopanel Variants</a></li>
-<li><a class="active" href="variant-annotation.html"><span class="header-section-number">4</span> Variant Annotation</a></li>
-</ul>
-
-        <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/rwedema/NGS-Genetics/">View book source <i class="fab fa-github"></i></a></p>
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Case background information and exercises</a>
+          </h1>
         </div>
-      </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="variant-annotation" class="section level1" number="4">
-<h1>
-<span class="header-section-number">Week 4</span> Variant Annotation<a class="anchor" aria-label="anchor" href="#variant-annotation"><i class="fas fa-link"></i></a>
-</h1>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="variant-annotation" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Week 4</span> Variant Annotation<a href="variant-annotation.html#variant-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In the - for now - final Galaxy workflow step for analyzing our patient, we are going to annotate all our filtered variants to determine the severity of the variations we determined last time with the <code>LoFreq</code> tool. This involves comparing all our variants against a number of databases containing <em>annotation data</em> for known variants. We will use our filtered <code>VCF</code>-file resulting from LoFreq so we need to upload our newly created VCF file to Galaxy. Make sure that Galaxy recognizes the file type by selecting the correct file type when uploading or change it afterwards using the <em>Edit attributes</em> button.</p>
-<div class="inline-figure"><img src="images/upload.png" width="432"></div>
-<div id="snpeff-and-snpsift" class="section level2" number="4.1">
-<h2>
-<span class="header-section-number">4.1</span> SnpEff and SnpSift<a class="anchor" aria-label="anchor" href="#snpeff-and-snpsift"><i class="fas fa-link"></i></a>
-</h2>
+<p><img src="images/upload.png" width="432" /></p>
+<div id="snpeff-and-snpsift" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> SnpEff and SnpSift<a href="variant-annotation.html#snpeff-and-snpsift" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>There are multiple methods of annotating found variants. Most of these will require extra data to predict the effect of a variant or to compare it with a known set of variants. Here we use a set of tools that does both types of annotation. See for further details and a manual the <a href="http://pcingola.github.io/SnpEff/">Github documentation</a>.</p>
 <ul>
-<li>
-<strong><code>SnpEff</code></strong>: <em>is a variant annotation and effect prediction tool. It annotates and predicts the effects of genetic variants (such as amino acid changes)</em>
-</li>
-<li>
-<strong><code>SnpSift</code></strong>: <em>is a toolbox that allows you to filter and manipulate annotated files.</em>
+<li><strong><code>SnpEff</code></strong>: <em>is a variant annotation and effect prediction tool. It annotates and predicts the effects of genetic variants (such as amino acid changes)</em></li>
+<li><strong><code>SnpSift</code></strong>: <em>is a toolbox that allows you to filter and manipulate annotated files.</em>
 <ul>
 <li>actually, this tool also annotates variants using a variety of data sources, for which we will use it.</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <p>Both tools are available in Galaxy with numerous sub-tools depending on the task that you want to do. To get the most information for each variant, we will perform three annotation <em>runs</em>:</p>
 <p><strong>Step 1</strong>: Using SnpEff to annotate variants using the <code>GRCh38.86</code> database adding information related to the gene, transcript and protein that are affected by this variant. This results in a lot of extra data that is all documented in the changed VCF header.</p>
@@ -103,14 +263,11 @@
 <ul>
 <li>In Galaxy, go to <code>Shared Data</code> (top menu) –&gt; <code>Data Libraries</code> –&gt; <code>dbSnp</code> library</li>
 <li>Select both files shown there and use the <code>Add to history</code> –&gt; <code>as datasets</code> option to get them in your own history</li>
-</ul>
-</li>
+</ul></li>
 <li>Select the <code>SnpSift Annotate SNPs from dbSnp</code> tool from the <code>Variant Calling</code> tool menu in Galaxy.
 <ul>
-<li>
-<strong>Note</strong>: this is a different tool from the <code>dbNSFP</code> database, see step #3 below.</li>
-</ul>
-</li>
+<li><strong>Note</strong>: this is a different tool from the <code>dbNSFP</code> database, see step #3 below.</li>
+</ul></li>
 <li>Select the output VCF file created by SnpEff in step #1 as the <code>Variant input file</code>.</li>
 <li>Select the <code>dbSnp_clinvar.vcf.gz</code> file as the <code>VCF File with ID field annotated</code>.</li>
 <li>For <code>Fields to annotate</code> select the <code>Add also INFO fields</code> option and execute the tool.</li>
@@ -149,47 +306,34 @@ Step #3 SnpSift - dbNSFP with all options:
 ----------
 
 -->
-<div id="assignment" class="section level3" number="4.1.1">
-<h3>
-<span class="header-section-number">4.1.1</span> Assignment<a class="anchor" aria-label="anchor" href="#assignment"><i class="fas fa-link"></i></a>
-</h3>
+<div id="assignment" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Assignment<a href="variant-annotation.html#assignment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Create a table in your report where you summarize the added annotation data (very!) briefly;
 <ul>
 <li>The database where the data comes from</li>
 <li>The result or value (is it an identifier, a percentage, etc.).</li>
-<li>
-<strong>Hint</strong>: you can add formatted tables in markdown with some syntax which is easiest generated at <a href="www.tablesgenerator.com/markdown_tables">https://www.tablesgenerator.com</a>
-</li>
-</ul>
-</li>
+<li><strong>Hint</strong>: you can add formatted tables in markdown with some syntax which is easiest generated at <a href="www.tablesgenerator.com/markdown_tables">https://www.tablesgenerator.com</a></li>
+</ul></li>
 </ul>
 <p>The VCF header only describes the names of the databases the data originates from and does not give a clear explanation. There might be a single source for the documentation (please let us know if you find it!), but for now the best method of getting information about the added data is:</p>
 <ul>
-<li>
-<strong>Step #1</strong>: the output of the first step also includes a web report that at least gives more details on the results. Either use your biological knowledge or search for terms if they’re unclear</li>
-<li>
-<strong>Step #2</strong>: data from the <code>dbSnp</code> database comes from the ‘ClinVar’ version of this database, which is documented <a href="https://www.ncbi.nlm.nih.gov/variation/docs/ClinVar_vcf_files/">on its NCBI website</a>.</li>
-<li>
-<strong>Step #3</strong>: for the <code>dbNSFP</code> database there are descriptions available on the online version:
+<li><strong>Step #1</strong>: the output of the first step also includes a web report that at least gives more details on the results. Either use your biological knowledge or search for terms if they’re unclear</li>
+<li><strong>Step #2</strong>: data from the <code>dbSnp</code> database comes from the ‘ClinVar’ version of this database, which is documented <a href="https://www.ncbi.nlm.nih.gov/variation/docs/ClinVar_vcf_files/">on its NCBI website</a>.</li>
+<li><strong>Step #3</strong>: for the <code>dbNSFP</code> database there are descriptions available on the online version:
 <ul>
 <li>Go to <a href="http://database.liulab.science/dbNSFP">the online dbNSFP instance</a>, select the <strong>Academic</strong> option and click <strong>Connect</strong>.</li>
 <li>If you hover over any of the selectable Variant fields, you can read a brief description of the data that is added.</li>
 <li>Note that this is for dbNSFP version 4.4a and we use version 4.3c (very minor differences)</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 </div>
 </div>
-<div id="programming-assignment-analyzing-variant-annotation" class="section level2" number="4.2">
-<h2>
-<span class="header-section-number">4.2</span> Programming Assignment; Analyzing Variant Annotation<a class="anchor" aria-label="anchor" href="#programming-assignment-analyzing-variant-annotation"><i class="fas fa-link"></i></a>
-</h2>
+<div id="programming-assignment-analyzing-variant-annotation" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Programming Assignment; Analyzing Variant Annotation<a href="variant-annotation.html#programming-assignment-analyzing-variant-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Given the possibly hundreds of annotated variants with data from multiple data sources, it’s time to do one last <em>filtering</em> on the data to come up with a list of variants of which we can say, with some certainty, that they are related to the condition. As with the VCF-filter tool that we’ve written, here too will we check each line and decide if it is a variant worth reporting on. Whether we want to keep a variant or not depends on the annotation added by SnpEff/SnpSift and it is your task to come up with an approach for <strong>combining</strong> data from these data sources to <em>rank</em> the annotated variants.</p>
-<div id="assignment-10-data-preparation" class="section level3" number="4.2.1">
-<h3>
-<span class="header-section-number">4.2.1</span> Assignment 10; Data Preparation<a class="anchor" aria-label="anchor" href="#assignment-10-data-preparation"><i class="fas fa-link"></i></a>
-</h3>
+<div id="assignment-10-data-preparation" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Assignment 10; Data Preparation<a href="variant-annotation.html#assignment-10-data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This programming assignment asks to take another good look at the data, but now in R to see if everything is in a suitable format to eventually sort the data and extract a top-set of variants related to the condition. As you have seen, all data is essentially stored in a single column that contains multiple separators (such as <code>|</code> and <code>;</code>). You need to think of and implement a good strategy to convert all this information into a workable data format, such as a data frame.</p>
 <p>There are a few caveats though that can also be seen when looking at the SnpEff report (the ‘stats’ output). For instance, there are two lines in the overview table that describe the amount of variants and the amount of hits in the SnpEff database:</p>
 <ul>
@@ -197,46 +341,37 @@ Step #3 SnpSift - dbNSFP with all options:
 <li><code>Number of effects        1,332</code></li>
 </ul>
 <p>Which means that on average every variant has about 10 (!) hits of which all data is placed in the <code>INFO</code> column (most notably in the <code>ANN</code> part of the <code>INFO</code> column). This is caused most often by multiple transcripts (alternative splicing) being affected by this variant. This makes it very difficult to parse and therefore this section gives tips and example code to assist in that task. With this much data from three different steps it is too complex to assess in a single run so we will assess annotation data step by step.</p>
-<div id="step-1-2-snpeff-ann-data-and-snpsift-clinvar-data" class="section level4" number="4.2.1.1">
-<h4>
-<span class="header-section-number">4.2.1.1</span> Step #1 &amp; #2; SnpEff ANN data and SnpSift ClinVar data<a class="anchor" aria-label="anchor" href="#step-1-2-snpeff-ann-data-and-snpsift-clinvar-data"><i class="fas fa-link"></i></a>
-</h4>
+<div id="step-1-2-snpeff-ann-data-and-snpsift-clinvar-data" class="section level4 hasAnchor" number="4.2.1.1">
+<h4><span class="header-section-number">4.2.1.1</span> Step #1 &amp; #2; SnpEff ANN data and SnpSift ClinVar data<a href="variant-annotation.html#step-1-2-snpeff-ann-data-and-snpsift-clinvar-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>According to the VCF header, the <code>ANN</code> data contains the values explained in the <a href="https://pcingola.github.io/SnpEff/se_inputoutput/#ann-field-vcf-output-files">SnpEff documentation</a>. Some, or all of them could be of interest. There is a Galaxy tool available to extract interesting fields from the added data.</p>
 <ul>
 <li>Select the <code>SnpSift Extract Fields from a VCF file into a tabular file</code> tool from the tool menu
 <ul>
 <li>the tool help or <a href="https://pcingola.github.io/SnpEff/snpsift/extractfields/">this manual</a> can provide more details</li>
-</ul>
-</li>
+</ul></li>
 <li>Select the annotated VCF file as input</li>
 <li>Provide the names of the columns of interest. For instance, the following could be used as a query for the ‘Fields to extract’:
 <ul>
 <li><code>CHROM POS REF ALT ANN[*].EFFECT ANN[*].IMPACT ANN[*].GENE ANN[*].FEATURE ANN[*].FEATUREID ANN[*].BIOTYPE ANN[*].ERRORS CLNDN CLNSIG</code></li>
 <li>Add or remove any other column you find interesting to the above query.</li>
-</ul>
-</li>
+</ul></li>
 <li>Enable the ‘One effect per line’ option</li>
 <li>Run the tool and download the resulting tabular file for analysis in R
 <ul>
 <li>The resulting file contains as many rows as effects reported by SnpEff (1332 in this example)</li>
-</ul>
-</li>
+</ul></li>
 </ul>
 <div class="rmdnote">
 <p>Note: always include the <code>CHROM POS REF ALT</code> columns which are needed to identify the variant in the original file.</p>
 </div>
 </div>
-<div id="step-3-snpsift-dbnsfp" class="section level4" number="4.2.1.2">
-<h4>
-<span class="header-section-number">4.2.1.2</span> Step #3; SnpSift dbNSFP<a class="anchor" aria-label="anchor" href="#step-3-snpsift-dbnsfp"><i class="fas fa-link"></i></a>
-</h4>
+<div id="step-3-snpsift-dbnsfp" class="section level4 hasAnchor" number="4.2.1.2">
+<h4><span class="header-section-number">4.2.1.2</span> Step #3; SnpSift dbNSFP<a href="variant-annotation.html#step-3-snpsift-dbnsfp" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Similar to the previous step, extract the fields of interest using the <code>SnpSift Extract Fields from a VCF file into a tabular file</code> tool. The <code>dbNSFP</code> entries are all prefixed with <code>dbNSFP_</code>, for instance: <code>dbNSFP_MutationAssessor_score</code> and <code>dbNSFP_SIFT_pred</code>. Once done, download this tabular file too for further analysis.</p>
 </div>
 </div>
-<div id="assignment-11-finding-variants-of-interest" class="section level3" number="4.2.2">
-<h3>
-<span class="header-section-number">4.2.2</span> Assignment 11; Finding Variants of Interest<a class="anchor" aria-label="anchor" href="#assignment-11-finding-variants-of-interest"><i class="fas fa-link"></i></a>
-</h3>
+<div id="assignment-11-finding-variants-of-interest" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Assignment 11; Finding Variants of Interest<a href="variant-annotation.html#assignment-11-finding-variants-of-interest" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Given the knowledge we have on the data stored in the two dataframes, we can now formulate questions for this data to find a set of variants which are most likely linked to the cardiomyopathy condition. This condition cannot be identified by a single variant but is often caused by several variants and the combination not only determines <em>if</em> someone suffers from cardiomyopathy but also how <em>badly</em> their condition is.</p>
 <p>The physician who diagnoses patients uses the genetic information of the found variants as one of the sources for confirming the condition. However, presenting a list of 100+ variant positions with a list of numbers from some tools is not how that works in practice; we need to present a short, ordered list of variants that can be related to the condition.</p>
 <p>Next, define your own sorting, filtering, selecting, etc. procedure to filter and order a top-list of variants that you’d present as aid to a diagnoses. For instance, you might have a variant that had a hit in the ClinVar database which directly links it to cardiomyopathy, this should probably be somewhere around the top of your list. Again, look at the output description that you’ve written earlier to come up with combination(s) of values. There is no golden standard for selecting these variants so it is very important to properly document and argument your decisions.</p>
@@ -258,95 +393,104 @@ Step #3 SnpSift - dbNSFP with all options:
 </ul>
 </div>
 </div>
-<div id="galaxy-workflow" class="section level2" number="4.3">
-<h2>
-<span class="header-section-number">4.3</span> Galaxy Workflow<a class="anchor" aria-label="anchor" href="#galaxy-workflow"><i class="fas fa-link"></i></a>
-</h2>
+<div id="galaxy-workflow" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Galaxy Workflow<a href="variant-annotation.html#galaxy-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Now that we have completed our analysis steps we can create a <strong>Galaxy workflow</strong>. In this workflow we will combine all the tools that we have used in Galaxy (FastQ files –&gt; SnpEff/SnpSift annotated output) so that when we receive new patient data in the future we can analyze that dataset with a single click!</p>
 <p>There are many <a href="https://galaxyproject.org/learn/advanced-workflow/">online resources</a> giving instructions and examples for creating Galaxy workflows, use these resources to create a workflow including all used analysis tools. Note that you can convert Galaxy histories into workflow(s), which saves a lot of time with configuring all the tools from that workfow.</p>
 <p>Once you have a workflow, make sure it is shared with your project partner and create a screenshot of it for your report (try to fit all tools in a single image).</p>
 <p><strong>Note</strong>; this assignment has a very low priority and should be done once you are satisfied with all other parts of your work! At the bare minimum, open your last history (including SnpEff/SnpSift) and explore/ play with the <code>Extract Workflow</code> option.</p>
 </div>
-<div id="comparative-genomics" class="section level2" number="4.4">
-<h2>
-<span class="header-section-number">4.4</span> Comparative Genomics<a class="anchor" aria-label="anchor" href="#comparative-genomics"><i class="fas fa-link"></i></a>
-</h2>
+<div id="comparative-genomics" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Comparative Genomics<a href="variant-annotation.html#comparative-genomics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>With the complete analysis nicely packaged into a single workflow, one thing that we can use it for is to do <em>comparative genomics</em>. This term contains many different types of comparisons and is described on Wikipedia as</p>
 <blockquote>
 <p><em>Comparative genomics is a field of biological research in which the genomic features of different organisms are compared.</em></p>
 </blockquote>
 <p>These features can be of many types and in our case they are the variants. A simple tool is available in Galaxy called <em>VCF-VCFintersect</em> that performs either <em>intersection</em> or <em>union</em> on two VCF datasets containing variant data. This tool compares two VCF files and retains either the shared variants (intersection) or all variants combined (union) as shown in the diagram below.</p>
-<div class="inline-figure"><img src="images/intersect_union.png" width="310"></div>
+<p><img src="images/intersect_union.png" width="310" /></p>
 <p><strong>Assignment</strong></p>
 <ul>
 <li>Process another patient sample (use a new history) by running your complete workflow.
 <ul>
 <li>Note that you have to filter the resulting SnpEff output (which contains the same data as the VCF file appended with annotation data) with the BED-data. Alternatively, you can stop after the LoFreq tool, download the VCF file, filter this using the BED-data and re-upload the filtered VCF file before continuing with SnpEff</li>
-</ul>
-</li>
+</ul></li>
 <li>Calculate the following three statistics:
 <ul>
 <li>The number of variants unique to patient 1</li>
 <li>The number of variants unique to patient 2</li>
 <li>The number of variants found in both patients</li>
-</ul>
-</li>
+</ul></li>
 <li>Create a VENN-diagram (like the image above) displaying these numbers.</li>
 </ul>
 </div>
-<div id="galaxy-data-cleanup" class="section level2" number="4.5">
-<h2>
-<span class="header-section-number">4.5</span> Galaxy Data Cleanup<a class="anchor" aria-label="anchor" href="#galaxy-data-cleanup"><i class="fas fa-link"></i></a>
-</h2>
+<div id="galaxy-data-cleanup" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Galaxy Data Cleanup<a href="variant-annotation.html#galaxy-data-cleanup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As a final closing assignment we ask you to clean up the Galaxy histories to save some space because it is difficult for the admin(s) to perform this cleaning for you. Once all products are finished, please consider removing all large files from your history, such as the outputs of the trimming (Trimmomatic), mapping (BWA), duplicate read marking (MarkDuplicates) and the pileup steps (Mpileup). For the large files, please make sure that you <em>also</em> click the <em>Permanently remove it from disk</em> link.</p>
 
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="analysis-of-cardiopanel-variants.html"><span class="header-section-number">3</span> Analysis of Cardiopanel Variants</a></div>
-<div class="empty"></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#variant-annotation"><span class="header-section-number">4</span> Variant Annotation</a></li>
-<li>
-<a class="nav-link" href="#snpeff-and-snpsift"><span class="header-section-number">4.1</span> SnpEff and SnpSift</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#assignment"><span class="header-section-number">4.1.1</span> Assignment</a></li></ul>
-</li>
-<li>
-<a class="nav-link" href="#programming-assignment-analyzing-variant-annotation"><span class="header-section-number">4.2</span> Programming Assignment; Analyzing Variant Annotation</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#assignment-10-data-preparation"><span class="header-section-number">4.2.1</span> Assignment 10; Data Preparation</a></li>
-<li><a class="nav-link" href="#assignment-11-finding-variants-of-interest"><span class="header-section-number">4.2.2</span> Assignment 11; Finding Variants of Interest</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#galaxy-workflow"><span class="header-section-number">4.3</span> Galaxy Workflow</a></li>
-<li><a class="nav-link" href="#comparative-genomics"><span class="header-section-number">4.4</span> Comparative Genomics</a></li>
-<li><a class="nav-link" href="#galaxy-data-cleanup"><span class="header-section-number">4.5</span> Galaxy Data Cleanup</a></li>
-</ul>
+            </section>
 
-      <div class="book-extra">
-        <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/rwedema/NGS-Genetics//blob/master/04-Week4-Annotation.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/rwedema/NGS-Genetics//edit/master/04-Week4-Annotation.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
-        </ul>
-</div>
-    </nav>
-</div>
+          </div>
+        </div>
+      </div>
+<a href="analysis-of-cardiopanel-variants.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-</div>
-</div> <!-- .container -->
-
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
-
-  <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Case background information and exercises</strong>" was written by Marcel Kempenaar and Ronald Wedema. It was last built on 2024-02-12.</p>
+    </div>
   </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
 
-  <div class="col-12 col-md-6 mt-3">
-    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
-  </div>
-
-</div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -358,22 +502,7 @@ Step #3 SnpSift - dbNSFP with all options:
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
 </script>
 </body>
+
 </html>

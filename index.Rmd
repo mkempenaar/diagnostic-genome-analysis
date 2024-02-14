@@ -1,6 +1,6 @@
 --- 
-title: "Case background information and exercises"
-author: "Marcel Kempenaar and Ronald Wedema"
+title: "Diagnostic Genome Analysis"
+author: "Marcel Kempenaar"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
