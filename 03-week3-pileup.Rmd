@@ -1,49 +1,29 @@
-# Analysis of Cardiopanel Variants
+# Analysis of Variants
 
 Once we are done with mapping all reads to the reference genome, we can determine the variant positions within the genes of interest. For this we use a Galaxy tool called *LoFreq* that will report on found variants and their statistics such as allele frequency, number of supported reads, average base quality at the found position, etc. 
 
-Before finding the actual variants, we will perform analysis assessing the achieved coverage. As you might have seen in IGV, coverages range from very high numbers (300+) to places where there are only a few reads present. In this chapter we will use R with a number of libraries often used for genetics research to report on these numbers for all cardiopanel genes. 
+Before finding the actual variants, we will perform analysis assessing the achieved coverage. As you might have seen in IGV, coverages range from very high numbers (300+) to places where there are only a few reads present. In this chapter we will use R with a number of libraries often used for genetics research to report on these numbers for all panel genes. 
 
 ## Assignment week 3
 
-### Programming Assignments; Coverage Overview for Cardiopanel Genes
+### Programming Assignments; Coverage Overview for Panel Genes
 
-Within the output of the previous mapping step (the BAM file) we can see how (well) our
-panel-genes are covered by our reads, a very important statistic on the
-quality of our data. We could assess this manually using IGV, but that is definitely not the method to use for such a task even though there are 'only' about 50 genes in total. This section contains a number of small assignments that - once completed - will give us a clear indication whether our mapping is of sufficient quality. Depending on this outcome we might need to revisit our previous step(s) such as the trimming process to increase our mapping quality. 
+Within the output of the previous mapping step (the BAM file) we can see how (well) our panel-genes are covered by our reads, a very important statistic on the quality of our data. We could assess this manually using IGV, but that is definitely not the method to use for such a task given that there can be 1-2000+ mapped exons in total. This section contains a number of small assignments that - once completed - will give us a clear indication whether our mapping is of sufficient quality. Depending on this outcome we might need to revisit our previous step(s) such as the trimming process to increase our mapping quality.
 
 During these assignments we will gain insight into the coverage of all of our genes of interest as well as their variants. We will use the BED-file describing the locations of all exons, the BAM file containing the mapped reads and - which we'll create later - a VCF-file listing all found variants. A number of assignments asks to visualize the results to get a good understanding of what we're looking at.
 
 ### Assignment Instructions
 
-Below are a number assignments that together perform the tasks as
-explained above. For each you are required to **carefully read the
-instructions** and make sure you understand the goal and data used for
-that particular assignment. Being able to **critically reflect** on the
-outcome of your analysis is the most important aspect of being a
-bioinformatician! Furthermore, these assignments are generally a
-guideline and while it should be considered the minimum tasks to
-complete, you are always invited to do *more* with the data that you
-have. Feel free to explore and keep that code in your lab-journal as
+Below are a number assignments that together perform the tasks as explained above. For each you are required to **carefully read the instructions** and make sure you understand the goal and data used for that particular assignment. Being able to **critically reflect** on the outcome of your analysis is the most important aspect of being a bioinformatician! Furthermore, these assignments are generally a guideline and while it should be considered the minimum tasks to complete, you are always invited to do *more* with the data that you have. Feel free to explore and keep that code in your lab-journal as
 well.
 
-To perform some of these tasks we do need to learn some theory that is
-specific for working with our data (BED and Pileup files among others).
-For that we will introduce the Bioconductor libraries later on. First
-though we will explore the most simple of our data files and create a
-few simple plots based on the BED data.
+To perform some of these tasks we do need to learn some theory that is specific for working with our data (BED and Pileup files among others). For that we will introduce the Bioconductor libraries later on. First though we will explore the most simple of our data files and create a few simple plots based on the BED data.
 
-For each of these assignments, create at least one code-chunk, name it
-accordingly and in between the assignments reflect on what you did. For
-instance as the end product of assignment one is a dataframe with a
-proper header and an overview plot of the number of exons per
-chromosome, you could end this assignment by stating *"After loading and processing the data, the overview shows all chromosomes on which exons are located for the opanel genes"*.
+For each of these assignments, create at least one code-chunk, name it accordingly and in between the assignments reflect on what you did. For instance as the end product of assignment one is a dataframe with a proper header and an overview plot of the number of exons per chromosome, you could end this assignment by stating *"After loading and processing the data, the overview shows all chromosomes on which exons are located for the opanel genes"*. 
 
 ### Assignment 1; Loading the BED-data
 
-The first step of our program is to read the BED file to get the exon
-locations for our opanel genes. We already viewed the contents of the
-BED file in Galaxy, where we saw that this file contains 4 columns: 
+The first step of our program is to read the BED file to get the exon locations for our panel genes. We already viewed the contents of the BED file in Galaxy, where we saw that this file contains 4 columns: 
 
 * The chromosome number, 
 * exon start location, 

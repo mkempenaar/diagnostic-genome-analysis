@@ -1,19 +1,22 @@
 # Read Mapping
+
 Now that we know what the quality is of the NGS patient data and have corrected the reads on low quality and short read lengths, we can continue with the mapping of our reads against a reference genome. In this step we use the human genome as a reference to which we will map the cleaned reads using the tool BWA. After mapping the reads we can look for variations between the reference and our patient. 
 
 ## Mapping with BWA
+
 Before starting with mapping the data to the human reference genome, we can calculate some important statistics to see what we can achieve with our data.
 
 ## Assignment week 2
+
 The *[coverage][1]* is the number of reads that were mapped at a given position and it is considered a good measurement to determine if there was enough data for further analysis. To identify significant variations, we aim for a minimal coverage of **20**, any lower and it becomes hard to differentiate between a true variant and a sequencing error. Given the Illumina platform and given these facts:
 <ul>
     <li>a minimal average coverage (read depth) of 20,</li>
-    <li>the read length is 2 * 150 (read pair with each read having 150 bases),</li>
+    <li>the read length is determined by your data set (for instance a read pair with each read having 75 or 150 bases),</li>
     <li>the human genome size is 3,137,161,264 bases and</li>
-    <li>the target region (captured region, size of the gene panel) totals 320,000 bases for the Cardio panel. This differs for your chosen case and has to be calculated by you.</li>
+    <li>the target region (captured region, size of the gene panel) totals 320,000 bases for the Cardio panel or 1,000,000 bases for Medulloblastoma. This differs for your chosen case and has to be calculated by you.</li>
 </ul>
 
-we can use the Lander/Waterman equation to calculate our actual expected coverage: $$C = LN / G $$
+we can use the Lander/Waterman equation to calculate our actual expected coverage: $$ C = LN / G $$
 Where: 
 <ul>
     <li>`C` is the coverage,</li>
@@ -21,16 +24,17 @@ Where:
     <li>`N` is the number of reads</li>
 </ul>
 
-From your own cleaned dataset, look up how many reads are left for mapping. Calculate the expected coverage if we use this data for your gene panel (`G` = captured region). An Illumina MiSeq V3 can produce up to 25 million reads of length 300, how many patients could you analyse per run if the minimum coverage is 20 and you where using your gene panel? Calculate these assignments in R within your document.
+From your own cleaned data set, look up how many reads are left for mapping. Calculate the expected coverage if we use this data for your gene panel (`G` = captured region). An Illumina MiSeq V3 can produce up to 25 million reads of length 300, how many patients could you analyse per run if the minimum coverage is 20 and you where using your gene panel? Calculate these assignments in R within your document.
 
-Select the **Map with [BWA-MEM](https://arxiv.org/abs/1303.3997)** tool from the Tools menu. For the mapping we will be using a built-in genome (we made the human genome available in Galaxy). Select the <strong>Human reference HG19</strong> in the reference genome setting. Select paired end reads. 
+Select the correct **Map with BWA** tool from the Tools menu (depends on your read length). For the mapping we will be using a built-in genome of which there are *many* available. Select the <strong>Human reference hg38</strong> in the reference genome setting. Select paired end reads. 
 
-From your previous experiments with different FASTQ cleaning settings, select the R1 paired Trimmomatic data as the first set of reads and the R2 paired Trimmomatic as the second set of reads. Execute the tool, this will take a while to run (10 - 20 minutes).
+Note: the reference genomes are made available by the developers of Galaxy. They host a collection of prebuilt *indexed* reference genomes that most mapping tools require. As far as we know, once someone used a certain reference genome, it is cached on our Galaxy server. If this is not the case, runtimes can become longer as several gigabytes of data need to be downloaded.
+
+From your previous experiments with different FASTQ cleaning settings, select the R1 paired Trimmomatic data as the first set of reads and the R2 paired Trimmomatic as the second set of reads. Execute the tool, this can take a while to run (20 - 60 minutes).
 
 ```{r, echo=FALSE}
 knitr::include_graphics("images/BWAMEMSettings.png")
 ```
-
 
 [1]: https://en.wikipedia.org/wiki/Coverage_(genetics)
 
@@ -38,12 +42,11 @@ knitr::include_graphics("images/BWAMEMSettings.png")
 
 In the process of creating the reads, *[duplicates](http://www.cureffi.org/2012/12/11/how-pcr-duplicates-arise-in-next-generation-sequencing/)* may have arisen by PCR artifacts. These duplicate reads are not real biological sequences in the sense that they originate from the sample, but are a technical artifact. In downstream analysis these duplicate reads may generate false positive variants. Can you think of a reason why this is the case?
 
-Before we are going to look at any differences between the reference and our patient, we first have to *mark* the duplicate mapped reads. To do this, select the [MarkDuplicates](http://broadinstitute.github.io/picard/) tool from the Tools menu. Select the *Map with BWA-MEM output on data ... and ....*, set the <strong>Assume input file is already sorted option</strong> to No and Execute the tool. This tool will add a *flag* to each read that it finds as being duplicate and other tools will ignore any read that has this flag. It will therefore not *remove* the read from the data.
+Before we are going to look at any differences between the reference and our patient, we first have to *mark* the duplicate mapped reads. To do this, select the [MarkDuplicates](http://broadinstitute.github.io/picard/) tool from the Tools menu. Select the *Map with BWA output on data ... and ....*, set the <strong>Assume input file is already sorted option</strong> to No and Execute the tool. This tool will add a *flag* to each read that it finds as being duplicate and other tools will ignore any read that has this flag. It will therefore not *remove* the read from the data.
 
 ```{r, echo=FALSE}
 knitr::include_graphics("images/removeDuplicates.png")
 ```
-
 
 ## Visualizing the Mapping Data
 
@@ -64,7 +67,7 @@ The IGV program is standard installed with version 18 of the human reference gen
 In IGV select the <strong>genomes menu</strong> and select <strong>Load Genome from File...</strong>. The <strong>Look in:</strong> will show that you are in your home directory. First go to <strong>/</strong>, than select the <strong>commons</strong> folder, next click on the <strong>minor</strong>, <strong>projectgenomics</strong> and <strong>genomes</strong> folders. From the last folder select the <strong>hg19.genome</strong> and click on <strong>Open</strong>.
 -->
 
-Because our sequence reads are from captured exomes (totaling 320.000 bases for the example Cardio panel, which is just 0,001% of the total genome), you have to zoom in quite a bit to see any of the mappings. Too help you find where to zoom in, we can add an extra layer to the genome browser (called a track). I have uploaded files containing all the exome regions of each genepanel to the galaxy server. You can download the file for your case by going to <strong>Shared Data -> Data Libraries -> case_name</strong> in the Galaxy browser. Select <strong>case_name.BED</strong> and click on the <strong>to History</strong> button. `replace the case_name with your actual case`. Please have a look at the file in you History. The file consists of 4 columns, which describe the chromosome number, start location exome, end location exome and gene name. Download this file (*Save File*) to your computer.
+Because our sequence reads are from captured exomes (for example the 320.000 bases for the example Cardio panel, which is just 0,001% of the total genome), you have to zoom in quite a bit to see any of the mappings. Too help you find where to zoom in, we can add an extra layer to the genome browser (called a track). Files containing all the exome regions of each genepanel are available on the galaxy server. You can download these files for your case by going to <strong>Shared Data -> Data Libraries -> case_name</strong> in the Galaxy browser. Select <strong>case_name.BED</strong> and click on the <strong>to History</strong> button. Please have a look at the file in you History. The file consists of 4 columns, which describe the chromosome number, start location exome, end location exome and gene name. Download this file (*Save File*) to your computer.
 
 Now from IGV, again select <strong>File -> Load from File..</strong>. Look in your Downloads folders for a file ending in **.bed** and open this file. Your screen should look like this now:
 
