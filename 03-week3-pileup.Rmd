@@ -188,7 +188,7 @@ The techniques required for this assignment are mainly knowing how to work with 
 
 When we talk about iterating when performing programming, we mean repeatedly performing a set of operations on separate elements (of a vector, a list, columns or rows of a data-frame, etc.). In ordinary programming languages this often requires explicit step-wise execution of these operations, using constructs such as `for` and `while` 'loops'. In R however, we already perform a lot of iterative steps without realizing it. Given a vector `x`, we can multiply each value with itself by simply stating `x * x`. Programming languages such as Python, Java and C require code like:
 
-```
+```{python, eval=FALSE}
 squared = []
 for value in x:
     squared.append(value * value)
@@ -196,11 +196,11 @@ for value in x:
 
 This is still pretty readable code, but in R we never require this explicit form even though we *could*. This simple one liner in R for instance calculates the average log2 ratio of two columns from a data-frame that can contain thousands of rows and many columns, at once:
 
-```
-mean(log2(dat['sample1], dat['sample2']))
+```{r, eval=FALSE}
+mean(log2(dat['sample1'], dat['sample2']))
 ```
 
-which would require a rather large for-loop in most other languages. When we do want to apply something to each element separately in R we often use - rather complicated but efficient - `apply` functions. For now though we will use the easier to understand `for` loop to perform our code on data for each gene (point 1 above). With the following example on iterating over our bed_data you should be able to perform this assignment:
+which would require a rather large for-loop in most other languages. When we do want to apply something to each element separately in R we often use the - rather complicated but efficient - `apply` functions. For now though we will use the easier to understand `for` loop to perform our code on data for each gene (point 1 above). With the following example on iterating over our `bed_data` you should be able to perform this assignment:
 
 
 ```{r, echo=TRUE}
@@ -224,18 +224,24 @@ for (gene in names(bed_splitted)[1:10]) {
     * You can get the gene names by executing the `names` function on the resulting list from `split`.
     * You can get all the exon-rows easily by accessing the list items: `split_output[[gene_name]]`.
 * When iterating, the code that you execute for each gene could be (1) create an `IRanges` object, (2) create a `GRanges` object combining the chromosome with the `IRanges` object and finally appending this to a list.
+* Note that this requires an empty list to be created *before* the `for`-loop, such as `exons <- list()`. 
 
-Once completed, you should run the following code - besides the `load` function - and compare the results. Also, this was most likely a very challenging assignment but we will re-use parts of the code you have made now. Revisit everything you've written to complete this task and make sure you understand what everything does (the exact *how* it works is of less importance).
+Revisit everything you've written to complete this task and make sure you understand what everything does (the exact *how* it works is of less importance). Also, you can use functions like `class` and `elementType` to confirm that your list is of class `GRangesList` (actually a `CompressedGRangesList`) and its contents are of type `GRanges`. 
 
 
 ### Assignment 4; Gene Lengths
 
-We'll create one last visualization based on the BED-data - but now using the `GRanges` object - namely an overview of the gene lengths; another barplot. The example code above shows how to calculate the length of a single gene (using `ranges`, `width` and `sum`). The same code also works on the complete `GRangesList` object,  use this to create a barplot showing the length of each gene.
+We'll create one last visualization based on the BED-data - but now using the `GRanges` object - namely an overview of the gene lengths; another barplot. The following example code shows how to calculate the length of a single gene (using `ranges`, `width` and `sum`). The same code also works on the complete `GRangesList` object, use this to create a barplot showing the length of each gene.
+
+```{r calc_gene_length, eval=F}
+# Check the length (in basepairs) of a single gene (exons only)
+psen2_ranges <- ranges(bed_data[['PSEN2']])
+paste("Length of the 'PSEN2' gene:", sum(width(psen2_ranges)), "\n")
+```
 
 **Hint:**
 
-As you will notice, there is one gene that is very long compared to the others and this makes the plot difficult to read. The `plotrix` library contains the `gap.barplot` function specifically for this purpose (also supports the `las = 2` argument). Try to use this function for creating the barplot. As a small challenge you can try to style the y-axis to show more values ('ticks') besides the minimum and maximum.
-
+As you might see, there can be some genes which are very long compared to the others and this makes the plot difficult to read. The `plotrix` library contains the `gap.barplot` function specifically for this purpose (also supports the `las = 2` argument). Try to use this function for creating the barplot. As a small challenge you can try to style the y-axis to show more values ('ticks') besides the minimum and maximum.
 
 
 ### Assignment 5; Loading the Mapped Reads
