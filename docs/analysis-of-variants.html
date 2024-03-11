@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Kempenaar" />
 
 
-<meta name="date" content="2024-03-06" />
+<meta name="date" content="2024-03-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -382,20 +382,20 @@ shown below:</p>
 <span id="cb9-2"><a href="analysis-of-variants.html#cb9-2" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Length of SOD2:&quot;</span>, <span class="fu">sum</span>( <span class="fu">width</span>(ranges) ), <span class="st">&quot;bp&quot;</span>)</span></code></pre></div>
 <pre><code>## Length of SOD2: 869 bp</code></pre>
 <p>We see the same data now represented as an <code>IRanges</code> object. We do however both miss some data (the chromosome) and get some extra data as well (the <em>width</em> (length) of each exon). As it’s important to know on which chromosome each gene lies we will convert our <code>ranges</code> object into a <code>GRanges</code> object that combines both data:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="analysis-of-variants.html#cb11-1" tabindex="-1"></a><span class="co"># Converts to GRanges and adds the text &#39;chr&#39; to each chromosome</span></span>
-<span id="cb11-2"><a href="analysis-of-variants.html#cb11-2" tabindex="-1"></a>granges <span class="ot">&lt;-</span> <span class="fu">GRanges</span>(<span class="at">seqnames =</span> <span class="fu">paste0</span>(<span class="st">&quot;chr&quot;</span>, sod2<span class="sc">$</span>chromosome),</span>
-<span id="cb11-3"><a href="analysis-of-variants.html#cb11-3" tabindex="-1"></a>                   <span class="at">ranges =</span> ranges)</span>
-<span id="cb11-4"><a href="analysis-of-variants.html#cb11-4" tabindex="-1"></a>granges</span></code></pre></div>
 <pre><code>## GRanges object with 5 ranges and 0 metadata columns:
 ##        seqnames              ranges strand
 ##           &lt;Rle&gt;           &lt;IRanges&gt;  &lt;Rle&gt;
-##   SOD2     chr6 160103505-160103690      *
-##   SOD2     chr6 160105866-160106085      *
-##   SOD2     chr6 160109138-160109294      *
-##   SOD2     chr6 160113673-160113915      *
-##   SOD2     chr6 160114157-160114219      *
+##   SOD2        6 160103505-160103690      *
+##   SOD2        6 160105866-160106085      *
+##   SOD2        6 160109138-160109294      *
+##   SOD2        6 160113673-160113915      *
+##   SOD2        6 160114157-160114219      *
 ##   -------
-##   seqinfo: 1 sequence from an unspecified genome; no seqlengths</code></pre>
+##   seqinfo: 18 sequences from an unspecified genome; no seqlengths</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="analysis-of-variants.html#cb12-1" tabindex="-1"></a><span class="co"># Converts iRanges to GRanges, adding the chromosome name</span></span>
+<span id="cb12-2"><a href="analysis-of-variants.html#cb12-2" tabindex="-1"></a>granges <span class="ot">&lt;-</span> <span class="fu">GRanges</span>(<span class="at">seqnames =</span> sod2<span class="sc">$</span>chromosome,</span>
+<span id="cb12-3"><a href="analysis-of-variants.html#cb12-3" tabindex="-1"></a>                   <span class="at">ranges =</span> ranges)</span>
+<span id="cb12-4"><a href="analysis-of-variants.html#cb12-4" tabindex="-1"></a>granges</span></code></pre></div>
 <p>When comparing the <code>IRanges</code> object with the <code>GRanges</code> object, it looks rather similar with yet again some missing data (the <em>width</em>) and some extra data (the <em>strand</em>). Nothing is lost though, as objects often have a lot of <em>accessor</em> methods that you can use for getting to the actual data, as the example above is a <em>representation</em> of the object that you get when you print it. Functions such as <code>width()</code> applied to an <code>IRanges</code> object gives the <code>width</code> column and the <code>ranges()</code> function applied to a <code>GRanges</code> object gives the <code>IRanges</code> object contained within. When needed, the assignments will hint to their usage but the linked manuals also describe the most important ones.</p>
 <p>Now that we have a gene within a <code>GRanges</code> object, what can we do with it? For now with just the BED data not a lot, but as we will also put the Pileup data into a similar <code>GRanges</code> object, we can start asking our data interesting questions with the <code>pileup</code> function for instance. This can be used to get the Pileup information specific for our exons and ignoring everything else. But before we can do that we need to get our BED-data into the proper format first and that is what we will do now.</p>
 <p>This more challenging assignment results in yet another type of object, named a <code>GRangesList</code> that contains multiple <code>GRanges</code> objects; one for each gene such as shown in the above example. So, in order to do that we need to:</p>
@@ -412,10 +412,10 @@ shown below:</p>
 <li>Use the conversion as explained in the <code>GRanges</code> manual: <code>bed_data &lt;- GRangesList(bed_data)</code> given that the list is called <code>bed_data</code>.</li>
 </ul></li>
 </ol>
-<p>The techniques required for this assignment are mainly knowing how to work with lists (including how to create them, accessing single elements, adding to lists and iterating over its items). The following hints, the numbered list above and the examples are everything you need to do this assignment. Below is a bit of code to show the expected result which you can repeat on your own data as a check.</p>
+<p>The techniques required for this assignment are mainly knowing how to work with lists (including how to create them, accessing single elements, adding to lists and iterating over its items). The following hints, the numbered list above and the examples are everything you need to do this assignment.</p>
 <p><strong>Hints and further instructions:</strong></p>
 <p><strong>Iteration</strong></p>
-<p>When we talk about iterating when performing programming, we mean repeatedly performing a set of operations on separate elements (of a vector, a list, columns or rows of a data-frame, etc.). In ordinary programming languages this often requires explicit step-wise execution of these operations, using constructs such as <code>for</code> and <code>while</code> ‘loops’. In R however, we already perform a lot of iterative steps without realizing it. Given a vector <code>x</code>, we can multiply each value with itself by simply stating <code>x * x</code>. Programming languages such as Python, Java and C require code like:</p>
+<p>When we talk about iterating when programming, we mean repeatedly performing a set of operations on separate elements (of a vector, a list, columns or rows of a data-frame, etc.). In ordinary programming languages this often requires explicit step-wise execution of these operations, using constructs such as <code>for</code> and <code>while</code> ‘loops’. In R however, we already perform a lot of iterative steps without realizing it. Given a vector <code>x</code>, we can multiply each value with itself by simply stating <code>x * x</code>. Programming languages such as Python, Java and C require code like:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="analysis-of-variants.html#cb13-1" tabindex="-1"></a>squared <span class="op">=</span> []</span>
 <span id="cb13-2"><a href="analysis-of-variants.html#cb13-2" tabindex="-1"></a><span class="cf">for</span> value <span class="kw">in</span> x:</span>
 <span id="cb13-3"><a href="analysis-of-variants.html#cb13-3" tabindex="-1"></a>    squared.append(value <span class="op">*</span> value)</span></code></pre></div>
@@ -766,13 +766,13 @@ number of bases that are missing.</p>
 <pre><code>## GRanges object with 5 ranges and 0 metadata columns:
 ##        seqnames              ranges strand
 ##           &lt;Rle&gt;           &lt;IRanges&gt;  &lt;Rle&gt;
-##   SOD2     chr6 160103505-160103690      *
-##   SOD2     chr6 160105866-160106085      *
-##   SOD2     chr6 160109138-160109294      *
-##   SOD2     chr6 160113673-160113915      *
-##   SOD2     chr6 160114157-160114219      *
+##   SOD2        6 160103505-160103690      *
+##   SOD2        6 160105866-160106085      *
+##   SOD2        6 160109138-160109294      *
+##   SOD2        6 160113673-160113915      *
+##   SOD2        6 160114157-160114219      *
 ##   -------
-##   seqinfo: 1 sequence from an unspecified genome; no seqlengths</code></pre>
+##   seqinfo: 18 sequences from an unspecified genome; no seqlengths</code></pre>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="analysis-of-variants.html#cb34-1" tabindex="-1"></a><span class="co"># Generate some random values for &#39;allele frequency&#39;</span></span>
 <span id="cb34-2"><a href="analysis-of-variants.html#cb34-2" tabindex="-1"></a>allele_frequency <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="fl">0.45</span>, <span class="at">sd =</span> <span class="fl">0.35</span>), <span class="dv">1</span>)</span>
 <span id="cb34-3"><a href="analysis-of-variants.html#cb34-3" tabindex="-1"></a></span>
@@ -783,13 +783,13 @@ number of bases that are missing.</p>
 <pre><code>## GRanges object with 5 ranges and 1 metadata column:
 ##        seqnames              ranges strand |        AF
 ##           &lt;Rle&gt;           &lt;IRanges&gt;  &lt;Rle&gt; | &lt;numeric&gt;
-##   SOD2     chr6 160103505-160103690      * |       0.4
-##   SOD2     chr6 160105866-160106085      * |       0.6
-##   SOD2     chr6 160109138-160109294      * |       0.6
-##   SOD2     chr6 160113673-160113915      * |       0.4
-##   SOD2     chr6 160114157-160114219      * |      -0.2
+##   SOD2        6 160103505-160103690      * |       0.7
+##   SOD2        6 160105866-160106085      * |       0.2
+##   SOD2        6 160109138-160109294      * |       0.6
+##   SOD2        6 160113673-160113915      * |       0.9
+##   SOD2        6 160114157-160114219      * |       1.0
 ##   -------
-##   seqinfo: 1 sequence from an unspecified genome; no seqlengths</code></pre>
+##   seqinfo: 18 sequences from an unspecified genome; no seqlengths</code></pre>
 <p>Use the example above to associate the frequency value with the created <code>GRanges</code> object. Now that we have both the BED-data (in a <code>GRangesList</code> object) and the VCF data in a <code>GRanges</code> object, we can</p>
 <ol start="5" style="list-style-type: decimal">
 <li>Get all variants that fall within an exon

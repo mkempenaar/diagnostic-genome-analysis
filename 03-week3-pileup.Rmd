@@ -159,9 +159,16 @@ cat("Length of SOD2:", sum( width(ranges) ), "bp")
 
 We see the same data now represented as an `IRanges` object. We do however both miss some data (the chromosome) and get some extra data as well (the *width* (length) of each exon). As it's important to know on which chromosome each gene lies we will convert our `ranges` object into a `GRanges` object that combines both data:
 
-```{r, echo=TRUE}
-# Converts to GRanges and adds the text 'chr' to each chromosome
-granges <- GRanges(seqnames = paste0("chr", sod2$chromosome),
+```{r iranges-to-granges, echo=FALSE}
+# Note: updated BED data does not require pasting of 'chr'
+granges <- GRanges(seqnames = sod2$chromosome,
+                   ranges = ranges)
+granges
+```
+
+```{r .hidden-iranges-to-granges, echo=TRUE, eval=FALSE}
+# Converts iRanges to GRanges, adding the chromosome name
+granges <- GRanges(seqnames = sod2$chromosome,
                    ranges = ranges)
 granges
 ```
@@ -180,13 +187,13 @@ This more challenging assignment results in yet another type of object, named a 
 4. *Convert* the complete list into a `GRangesList` object.
     * Use the conversion as explained in the `GRanges` manual: `bed_data <- GRangesList(bed_data)` given that the list is called `bed_data`.
 
-The techniques required for this assignment are mainly knowing how to work with lists (including how to create them, accessing single elements, adding to lists and iterating over its items). The following hints, the numbered list above and the examples are everything you need to do this assignment. Below is a bit of code to show the expected result which you can repeat on your own data as a check.
+The techniques required for this assignment are mainly knowing how to work with lists (including how to create them, accessing single elements, adding to lists and iterating over its items). The following hints, the numbered list above and the examples are everything you need to do this assignment.
 
 **Hints and further instructions:**
 
 **Iteration**
 
-When we talk about iterating when performing programming, we mean repeatedly performing a set of operations on separate elements (of a vector, a list, columns or rows of a data-frame, etc.). In ordinary programming languages this often requires explicit step-wise execution of these operations, using constructs such as `for` and `while` 'loops'. In R however, we already perform a lot of iterative steps without realizing it. Given a vector `x`, we can multiply each value with itself by simply stating `x * x`. Programming languages such as Python, Java and C require code like:
+When we talk about iterating when programming, we mean repeatedly performing a set of operations on separate elements (of a vector, a list, columns or rows of a data-frame, etc.). In ordinary programming languages this often requires explicit step-wise execution of these operations, using constructs such as `for` and `while` 'loops'. In R however, we already perform a lot of iterative steps without realizing it. Given a vector `x`, we can multiply each value with itself by simply stating `x * x`. Programming languages such as Python, Java and C require code like:
 
 ```{python, eval=FALSE}
 squared = []
@@ -216,7 +223,6 @@ for (gene in names(bed_splitted)[1:10]) {
 }
 ```
 
-
 **Hints**
 
 * As point 2 asks to iterate over all genes, we need to think of a way to group our data (exons) into genes which can be done using the `split` function. The result of `split` is a list with 55 named elements; one for each gene.
@@ -227,7 +233,6 @@ for (gene in names(bed_splitted)[1:10]) {
 * Note that this requires an empty list to be created *before* the `for`-loop, such as `exons <- list()`. 
 
 Revisit everything you've written to complete this task and make sure you understand what everything does (the exact *how* it works is of less importance). Also, you can use functions like `class` and `elementType` to confirm that your list is of class `GRangesList` (actually a `CompressedGRangesList`) and its contents are of type `GRanges`. 
-
 
 ### Assignment 4; Gene Lengths
 
@@ -242,7 +247,6 @@ paste("Length of the 'PSEN2' gene:", sum(width(psen2_ranges)), "\n")
 **Hint:**
 
 As you might see, there can be some genes which are very long compared to the others and this makes the plot difficult to read. The `plotrix` library contains the `gap.barplot` function specifically for this purpose (also supports the `las = 2` argument). Try to use this function for creating the barplot. As a small challenge you can try to style the y-axis to show more values ('ticks') besides the minimum and maximum.
-
 
 ### Assignment 5; Loading the Mapped Reads
 
@@ -367,7 +371,6 @@ Steps that need to be taken:
 ## Assignment 7; Coverage calculation and reporting
 
 Calculating the actual coverage for each position is a little cumbersome as we need to sum the count of all rows for a single position since we don't - yet - care about mismatches or the strand a read is mapped on. 
-
 
 Instead of performing all kinds of programming steps to check if positions are similar and if so, summing the count values, we can use an R function to do this for us. We don't expect you to understand the following example besides understanding what it produces. This summation can done by a function called `aggregate`, defined as "*Compute Summary Statistics of Data Subsets*". 
 
