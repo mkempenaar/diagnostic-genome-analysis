@@ -39,7 +39,7 @@ The result consists of two files: an annotated VCF file and a web-report on all 
   
 **Step 2**: Adding `dbSnp` entries using `SnpSift`. The [dbSnp](https://www.ncbi.nlm.nih.gov/snp/) database contains information on known variants. The version that also includes clinical significance (combining the ClinVar database) is available for the SnpSift tool in Galaxy. 
 
-**Running SnpSift for dbsnp**: 
+**Running SnpSift for dbsnp**:
 
 * SnpSift requires the `dbSnp` database to be available in your history:
   - In Galaxy, go to `Shared Data` (top menu) --> `Data Libraries` --> `dbSnp` library

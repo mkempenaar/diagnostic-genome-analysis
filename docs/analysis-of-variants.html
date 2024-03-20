@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Kempenaar" />
 
 
-<meta name="date" content="2024-03-11" />
+<meta name="date" content="2024-03-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -757,7 +757,7 @@ number of bases that are missing.</p>
 </ol>
 <p>We now have the frequency value available for filtering and we’ll do that by adding it to the <code>GRanges</code> object we create next:</p>
 <ol start="4" style="list-style-type: decimal">
-<li>Create a <code>GRanges</code> object as we’ve done for assignment 3 by simply creating an <code>IRanges</code> object where the <code>start</code> and <code>end</code> parameters both get the variant position column (<code>POS</code> column). Also provide the <code>seqnames</code> parameter to <code>GRanges</code> which get the contents of the chromosome column.</li>
+<li>Create a <code>GRanges</code> object as we’ve done for assignment 3 by simply creating an <code>IRanges</code> object where the <code>start</code> and <code>end</code> parameters both get the variant position column (<code>POS</code> column). Also provide the <code>seqnames</code> parameter to <code>GRanges</code> which get the contents of the chromosome column. Note that we do not need to use a <code>for</code>-loop for this.</li>
 </ol>
 <p><code>GRanges</code> objects can contain other data as well, called <em>associated metadata</em>. Using the <code>mcols</code> function we can see existing or assign data to each variant. Adding this as a data-frame allows us to set a name for this column as demonstrated below with an example from the previous chapter:</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="analysis-of-variants.html#cb32-1" tabindex="-1"></a><span class="co"># Select and show data for a single gene (note that it specifies &quot;... and 0 metadata columns&quot;)</span></span>
@@ -794,11 +794,14 @@ number of bases that are missing.</p>
 <ol start="5" style="list-style-type: decimal">
 <li>Get all variants that fall within an exon
 <ul>
-<li>Use the <code>findOverlaps</code> function and store its output</li>
-<li>Convert the output to a data-frame</li>
+<li>Use the <code>findOverlaps</code> function and store its output
+<ul>
+<li>this requires the <code>query</code> and <code>subject</code> parameters to be set to the <em>variants</em> and <em>BED</em>-<code>GrangesList</code> objects respectively</li>
+</ul></li>
+<li>Convert the output to a data-frame using the <code>DataFrame</code> function</li>
 </ul></li>
 </ol>
-<p>The result from <code>findOverlaps</code> contains two columns of which we are interested in the <code>subjectHits</code> column; the rows from the VCF data that lie within an exon. You can use this column to subset the <code>GRanges</code> VCF object with. Note that the <code>queryHits</code> column describes not the exons but the genes; meaning a queryHit value of <code>1</code> refers to a hit within any of the <code>ABCC9</code> gene exons.</p>
+<p>The result from <code>findOverlaps</code> contains two columns of which we are interested in the <code>querytHits</code> column; the rows from the VCF data that lie within an exon. You can use this column to subset the <code>GRanges</code> VCF object with. Note that the <code>subjectHits</code> column describes not the exons but the genes; meaning a subjectHit value of <code>1</code> refers to a hit within any of the first gene exons (<code>ABCC9</code> in case of the cardiopanel).</p>
 <ol start="6" style="list-style-type: decimal">
 <li>Filter the <strong>remaining</strong> variants based on their frequency, using a minimum of <strong>30%</strong>
 <ul>
@@ -807,8 +810,8 @@ number of bases that are missing.</p>
 </ul></li>
 <li>Now that you have all the row numbers of variants that we want to keep, you need to think of a way to re-construct the VCF file and save it to disk.
 <ul>
-<li>Hint: read in the VCF file again for subsetting using the <code>readLines</code> function</li>
-<li>Note: do not forget to include the 24 header lines!</li>
+<li>Hint: read in the VCF file again for sub-setting using the <code>readLines</code> function</li>
+<li>Note: do not forget to include the 17 header lines!</li>
 </ul></li>
 <li>Upload the new VCF file into Galaxy as we’ll use it in the next chapter.</li>
 </ol>
@@ -823,6 +826,8 @@ number of bases that are missing.</p>
 </ul></li>
 <li>Visualize the amount of variants per gene. A simple solution for getting the numbers is to use the <code>table</code> function on the <code>queryHits</code> column (output of <code>findOverlaps</code>). Convert it to a data frame and then use the gene indices to get the actual gene names. Now you should have a combination of gene and number of variants. Create a barplot with this data as in the previous chapter and use <code>cex.names=0.7</code> to scale the gene names to make them all visible.</li>
 </ul>
+<p>It is also possible to add the VCF file to IGV (together with the mapping- and BED-files) and visualize the variants in the context of the genes. This is however not a requirement for this assignment.</p>
+<p><img src="images/igvVariant.png" width="311" /></p>
 
 </div>
 </div>

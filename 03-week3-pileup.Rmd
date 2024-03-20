@@ -391,7 +391,7 @@ head(coverage)
 ```
 
 Your task now is to calculate this per-position coverage for all genes and to calculate and report on - for each gene:
-
+ 
 * the number of bases sequenced for this gene,
 * the average coverage of the gene and
 * the number of low-coverage positions (coverage < 30) both in number **and** as the calculated percentage.
@@ -458,7 +458,7 @@ When looking at this file in more detail it is fairly easy to see variants in pl
 
 ### Assignment 8; VCF File Processing
 
-Please briefly read the linked wikipedia page to understand why this value is of importance. As we are working with patient data, we use the protocol as described by the UMCG that states that variants with a minimum frequency of **30%** are retained. This means we will filter out any variants with a *lower* value. Note that LoFreq stores this value as a fraction so we filter for values $>= 0.3$.
+Please briefly read the linked Wikipedia page to understand why this value is of importance. As we are working with patient data, we use the protocol as described by the UMCG that states that variants with a minimum frequency of **30%** are retained. This means we will filter out any variants with a *lower* value. Note that LoFreq stores this value as a fraction so we filter for values $>= 0.3$.
 
 There are once again step-by-step instructions for completing this assignment. It is however possible to do it without these instructions as we partly repeat steps we've taken in the previous assignments.
 
@@ -485,7 +485,7 @@ What it does is `rbind`s all vectors into a matrix. Again, inspect this object t
 
 We now have the frequency value available for filtering and we'll do that by adding it to the `GRanges` object we create next:
 
-4. Create a `GRanges` object as we've done for assignment 3 by simply creating an `IRanges` object where the `start` and `end` parameters both get the variant position column (`POS` column). Also provide the `seqnames` parameter to `GRanges` which get the contents of the chromosome column.
+4. Create a `GRanges` object as we've done for assignment 3 by simply creating an `IRanges` object where the `start` and `end` parameters both get the variant position column (`POS` column). Also provide the `seqnames` parameter to `GRanges` which get the contents of the chromosome column. Note that we do not need to use a `for`-loop for this.
 
 `GRanges` objects can contain other data as well, called *associated metadata*. Using the `mcols` function we can see existing or assign data to each variant. Adding this as a data-frame allows us to set a name for this column as demonstrated below with an example from the previous chapter:
 
@@ -505,22 +505,22 @@ mcols(granges) <- DataFrame(AF=allele_frequency)
 granges
 ```
 
-
 Use the example above to associate the frequency value with the created `GRanges` object. Now that we have both the BED-data (in a `GRangesList` object) and the VCF data in a `GRanges` object, we can 
 
 5. Get all variants that fall within an exon
     * Use the `findOverlaps` function and store its output
-    * Convert the output to a data-frame
+      - this requires the `query` and `subject` parameters to be set to the *variants* and *BED*-`GrangesList` objects respectively
+    * Convert the output to a data-frame using the `DataFrame` function
     
-The result from `findOverlaps` contains two columns of which we are interested in the `subjectHits` column; the rows from the VCF data that lie within an exon. You can use this column to subset the `GRanges` VCF object with. Note that the `queryHits` column describes not the exons but the genes; meaning a queryHit value of `1` refers to a hit within any of the `ABCC9` gene exons.
+The result from `findOverlaps` contains two columns of which we are interested in the `querytHits` column; the rows from the VCF data that lie within an exon. You can use this column to subset the `GRanges` VCF object with. Note that the `subjectHits` column describes not the exons but the genes; meaning a subjectHit value of `1` refers to a hit within any of the first gene exons (`ABCC9` in case of the cardiopanel).
 
 6. Filter the **remaining** variants based on their frequency, using a minimum of **30%**
     * Instead of removing rows or creating another subset, make sure you know which rows are to be kept after both filtering steps as we are going to reconstruct the original VCF file (we need it in Galaxy)
     * Manually sample a few rows to see if they do fall within an exon and have a frequency > 30%
 
 7. Now that you have all the row numbers of variants that we want to keep, you need to think of a way to re-construct the VCF file and save it to disk.
-    * Hint: read in the VCF file again for subsetting using the `readLines` function
-    * Note: do not forget to include the 24 header lines!
+    * Hint: read in the VCF file again for sub-setting using the `readLines` function
+    * Note: do not forget to include the 17 header lines!
 
 8. Upload the new VCF file into Galaxy as we'll use it in the next chapter.
 
@@ -531,3 +531,9 @@ We will create two simple visualizations:
 * Visualize the **allele frequency** for all remaining variants using the `hist` function. Remember that you can use the `mcols` function to get a metadata column or use the `$`-sign and the name of the column. Pass the argument `breaks=20` to `hist` and answer the following question in your lab-journal:
     - Can you explain the two peaks that you see in your histogram (around 50% and 100%)? 
 * Visualize the amount of variants per gene. A simple solution for getting the numbers is to use the `table` function on the `queryHits` column (output of `findOverlaps`). Convert it to a data frame and then use the gene indices to get the actual gene names. Now you should have a combination of gene and number of variants. Create a barplot with this data as in the previous chapter and use `cex.names=0.7` to scale the gene names to make them all visible.
+
+It is also possible to add the VCF file to IGV (together with the mapping- and BED-files) and visualize the variants in the context of the genes. This is however not a requirement for this assignment.
+
+```{r, echo=FALSE}
+knitr::include_graphics("images/igvVariant.png")
+```
