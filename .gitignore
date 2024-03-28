@@ -3,7 +3,6 @@
 .Rapp.history
 
 # Bookdown tmp files
-_main.*
 _book/
 
 # Session Data files
