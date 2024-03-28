@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Kempenaar" />
 
 
-<meta name="date" content="2024-03-20" />
+<meta name="date" content="2024-03-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -203,8 +203,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.2" data-path="variant-annotation.html"><a href="variant-annotation.html#assignment-11-finding-variants-of-interest"><i class="fa fa-check"></i><b>4.2.2</b> Assignment 11; Finding Variants of Interest</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="variant-annotation.html"><a href="variant-annotation.html#galaxy-workflow"><i class="fa fa-check"></i><b>4.3</b> Galaxy Workflow</a></li>
-<li class="chapter" data-level="4.4" data-path="variant-annotation.html"><a href="variant-annotation.html#comparative-genomics"><i class="fa fa-check"></i><b>4.4</b> Comparative Genomics</a></li>
-<li class="chapter" data-level="4.5" data-path="variant-annotation.html"><a href="variant-annotation.html#galaxy-data-cleanup"><i class="fa fa-check"></i><b>4.5</b> Galaxy Data Cleanup</a></li>
+<li class="chapter" data-level="4.4" data-path="variant-annotation.html"><a href="variant-annotation.html#comparative-genomics-optional"><i class="fa fa-check"></i><b>4.4</b> Comparative Genomics [Optional]</a></li>
+<li class="chapter" data-level="4.5" data-path="variant-annotation.html"><a href="variant-annotation.html#poster"><i class="fa fa-check"></i><b>4.5</b> Poster</a></li>
+<li class="chapter" data-level="4.6" data-path="variant-annotation.html"><a href="variant-annotation.html#galaxy-data-cleanup"><i class="fa fa-check"></i><b>4.6</b> Galaxy Data Cleanup</a></li>
 </ul></li>
 </ul>
 
@@ -710,7 +711,7 @@ number of bases that are missing.</p>
 </div>
 <div id="assignment-8-vcf-file-processing" class="section level3 hasAnchor" number="3.4.2">
 <h3><span class="header-section-number">3.4.2</span> Assignment 8; VCF File Processing<a href="analysis-of-variants.html#assignment-8-vcf-file-processing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Please briefly read the linked wikipedia page to understand why this value is of importance. As we are working with patient data, we use the protocol as described by the UMCG that states that variants with a minimum frequency of <strong>30%</strong> are retained. This means we will filter out any variants with a <em>lower</em> value. Note that LoFreq stores this value as a fraction so we filter for values <span class="math inline">\(&gt;= 0.3\)</span>.</p>
+<p>Please briefly read the linked Wikipedia page to understand why this value is of importance. As we are working with patient data, we use the protocol as described by the UMCG that states that variants with a minimum frequency of <strong>30%</strong> are retained. This means we will filter out any variants with a <em>lower</em> value. Note that LoFreq stores this value as a fraction so we filter for values <span class="math inline">\(&gt;= 0.3\)</span>.</p>
 <p>There are once again step-by-step instructions for completing this assignment. It is however possible to do it without these instructions as we partly repeat steps we’ve taken in the previous assignments.</p>
 <ol style="list-style-type: decimal">
 <li>Read in the data into a data-frame using the <code>read.delim</code> function
@@ -824,7 +825,7 @@ number of bases that are missing.</p>
 <ul>
 <li>Can you explain the two peaks that you see in your histogram (around 50% and 100%)?</li>
 </ul></li>
-<li>Visualize the amount of variants per gene. A simple solution for getting the numbers is to use the <code>table</code> function on the <code>queryHits</code> column (output of <code>findOverlaps</code>). Convert it to a data frame and then use the gene indices to get the actual gene names. Now you should have a combination of gene and number of variants. Create a barplot with this data as in the previous chapter and use <code>cex.names=0.7</code> to scale the gene names to make them all visible.</li>
+<li>Visualize the amount of variants per gene. A simple solution for getting the numbers is to use the <code>table</code> function on the <code>subjectHits</code> column (output of <code>findOverlaps</code> where <code>subject</code> are the <em>genes</em>). Convert it to a data frame and then use the gene indices to get the actual gene names. Now you should have a combination of gene and number of variants. Create a barplot with this data as in the previous chapter and use <code>cex.names=0.7</code> to scale the gene names to make them all visible.</li>
 </ul>
 <p>It is also possible to add the VCF file to IGV (together with the mapping- and BED-files) and visualize the variants in the context of the genes. This is however not a requirement for this assignment.</p>
 <p><img src="images/igvVariant.png" width="311" /></p>

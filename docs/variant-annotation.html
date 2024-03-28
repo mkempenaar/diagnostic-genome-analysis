@@ -23,7 +23,7 @@
 <meta name="author" content="Marcel Kempenaar" />
 
 
-<meta name="date" content="2024-03-20" />
+<meta name="date" content="2024-03-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -203,8 +203,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.2" data-path="variant-annotation.html"><a href="variant-annotation.html#assignment-11-finding-variants-of-interest"><i class="fa fa-check"></i><b>4.2.2</b> Assignment 11; Finding Variants of Interest</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="variant-annotation.html"><a href="variant-annotation.html#galaxy-workflow"><i class="fa fa-check"></i><b>4.3</b> Galaxy Workflow</a></li>
-<li class="chapter" data-level="4.4" data-path="variant-annotation.html"><a href="variant-annotation.html#comparative-genomics"><i class="fa fa-check"></i><b>4.4</b> Comparative Genomics</a></li>
-<li class="chapter" data-level="4.5" data-path="variant-annotation.html"><a href="variant-annotation.html#galaxy-data-cleanup"><i class="fa fa-check"></i><b>4.5</b> Galaxy Data Cleanup</a></li>
+<li class="chapter" data-level="4.4" data-path="variant-annotation.html"><a href="variant-annotation.html#comparative-genomics-optional"><i class="fa fa-check"></i><b>4.4</b> Comparative Genomics [Optional]</a></li>
+<li class="chapter" data-level="4.5" data-path="variant-annotation.html"><a href="variant-annotation.html#poster"><i class="fa fa-check"></i><b>4.5</b> Poster</a></li>
+<li class="chapter" data-level="4.6" data-path="variant-annotation.html"><a href="variant-annotation.html#galaxy-data-cleanup"><i class="fa fa-check"></i><b>4.6</b> Galaxy Data Cleanup</a></li>
 </ul></li>
 </ul>
 
@@ -400,8 +401,8 @@ Step #3 SnpSift - dbNSFP with all options:
 <p>Once you have a workflow, make sure it is shared with your project partner and create a screenshot of it for your report (try to fit all tools in a single image).</p>
 <p><strong>Note</strong>; this assignment has a very low priority and should be done once you are satisfied with all other parts of your work! At the bare minimum, open your last history (including SnpEff/SnpSift) and explore/ play with the <code>Extract Workflow</code> option.</p>
 </div>
-<div id="comparative-genomics" class="section level2 hasAnchor" number="4.4">
-<h2><span class="header-section-number">4.4</span> Comparative Genomics<a href="variant-annotation.html#comparative-genomics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="comparative-genomics-optional" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Comparative Genomics [Optional]<a href="variant-annotation.html#comparative-genomics-optional" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>With the complete analysis nicely packaged into a single workflow, one thing that we can use it for is to do <em>comparative genomics</em>. This term contains many different types of comparisons and is described on Wikipedia as</p>
 <blockquote>
 <p><em>Comparative genomics is a field of biological research in which the genomic features of different organisms are compared.</em></p>
@@ -410,7 +411,7 @@ Step #3 SnpSift - dbNSFP with all options:
 <p><img src="images/intersect_union.png" width="310" /></p>
 <p><strong>Assignment</strong></p>
 <ul>
-<li>Process another patient sample (use a new history) by running your complete workflow.
+<li>Process another sample (use a new history) by running your complete workflow.
 <ul>
 <li>Note that you have to filter the resulting SnpEff output (which contains the same data as the VCF file appended with annotation data) with the BED-data. Alternatively, you can stop after the LoFreq tool, download the VCF file, filter this using the BED-data and re-upload the filtered VCF file before continuing with SnpEff</li>
 </ul></li>
@@ -423,9 +424,108 @@ Step #3 SnpSift - dbNSFP with all options:
 <li>Create a VENN-diagram (like the image above) displaying these numbers.</li>
 </ul>
 </div>
-<div id="galaxy-data-cleanup" class="section level2 hasAnchor" number="4.5">
-<h2><span class="header-section-number">4.5</span> Galaxy Data Cleanup<a href="variant-annotation.html#galaxy-data-cleanup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As a final closing assignment we ask you to clean up the Galaxy histories to save some space because it is difficult for the admin(s) to perform this cleaning for you. Once all products are finished, please consider removing all large files from your history, such as the outputs of the trimming (Trimmomatic), mapping (BWA), duplicate read marking (MarkDuplicates) and the pileup steps (Mpileup). For the large files, please make sure that you <em>also</em> click the <em>Permanently remove it from disk</em> link.</p>
+<div id="poster" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Poster<a href="variant-annotation.html#poster" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The final assignment is to create a poster that summarizes your work and will be presented at the institute poster day scheduled in the final exam week. The poster should contain the following elements:</p>
+<ul>
+<li><strong>Title</strong>: A title that summarizes the main message of your poster.</li>
+<li><strong>Abstract</strong>: A short summary of your work. Contains a brief introduction of the topic (condition), the data used, the methods applied, the results obtained, and the conclusions drawn.</li>
+<li><strong>Materials and Methods</strong>: A brief description of the methods used in your analysis. Most likely a combination of a description of the data source (sequencer, how many patients, how many reads) and a visual representation of the workflow. This can either be a screenshot from Galaxy or a flow-chart in which you describe the tools used/ steps taken.</li>
+<li><strong>Results</strong>: A summary of the results of your analysis, with for instance:
+<ul>
+<li><em>Table</em>: A table with the top (10-15) variants that you found.</li>
+<li><em>Figure</em>: A visualization of the variants, for instance using a <em>lollipopplot</em> as shown below, a screenshot from IGV showing the variant</li>
+</ul></li>
+<li><strong>Conclusion/ Discussion</strong>: A discussion of the results and their implications.</li>
+<li><strong>Contact Information</strong>: name(s) and email address(es) and affiliation (<em>Hanze University of Applied Sciences, minor …</em>).</li>
+</ul>
+<p>The poster should be designed to be visually appealing and easy to read. You can use any software you like to create the poster, but we recommend using PowerPoint (online) or Open Office Draw on our Linux systems.</p>
+<p><strong>LollipopPlot</strong></p>
+<p>This visualization can be helpful in cases where many of the top-variants are located within a single gene. The plot shows the position of the variant on the x-axis and a score on the y-axis. The score can be the <em>AF</em> value from the VCF file or any other score that was added through the annotation steps. Further data (‘dimensions’) can be added through for instance:
+* The color of the lollipop (e.g. red for a high score, green for a low score)
+* The size of the lollipop (e.g. the size of the lollipop is proportional to the score)
+* The symbol of the lollipop (e.g. a star for a variant that is validated)
+* A value displayed within each node
+* Text labels attached to the nodes</p>
+<p>There are multiple options for drawing these types of graphs but here we demonstrate the use of the <code>lolliplot</code> function from the <code>trackViewer</code> package in R, see the <a href="https://bioconductor.org/packages/release/bioc/vignettes/trackViewer/inst/doc/lollipopPlot.html">online manual</a> for many examples on how to create this plot. This package is not installed by default in, so you have to install it yourself:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="variant-annotation.html#cb36-1" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;trackViewer&quot;</span>)</span>
+<span id="cb36-2"><a href="variant-annotation.html#cb36-2" tabindex="-1"></a><span class="fu">library</span>(trackViewer)</span></code></pre></div>
+<p>It requires two data sources for our use case:
+* The <em>sample</em> data which should be a GRanges object containing the <strong>variants</strong>
+* The <em>feature</em> data containing the <strong>gene</strong> on which these variants are located</p>
+<p>This basic example shows 9 variants for the RET gene, with the <em>AF</em> value as the score (scaled to a range of 0-100%). The plot shows the position of the variant on the x-axis and the allele-frequency on the y-axis.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="variant-annotation.html#cb37-1" tabindex="-1"></a><span class="co"># Calculate AF as percentage and set as &#39;score&#39; field</span></span>
+<span id="cb37-2"><a href="variant-annotation.html#cb37-2" tabindex="-1"></a>sample.gr<span class="sc">$</span>score <span class="ot">&lt;-</span> sample.gr<span class="sc">$</span>AF <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb37-3"><a href="variant-annotation.html#cb37-3" tabindex="-1"></a><span class="fu">head</span>(sample.gr)</span></code></pre></div>
+<pre><code>## GRanges object with 6 ranges and 2 metadata columns:
+##       seqnames    ranges strand |     score        AF
+##          &lt;Rle&gt; &lt;IRanges&gt;  &lt;Rle&gt; | &lt;numeric&gt; &lt;numeric&gt;
+##   [1]    chr10  43077059      * |   92.8571  0.928571
+##   [2]    chr10  43077063      * |   60.0000  0.600000
+##   [3]    chr10  43100520      * |   99.8780  0.998780
+##   [4]    chr10  43111239      * |  100.0000  1.000000
+##   [5]    chr10  43118395      * |   44.8733  0.448733
+##   [6]    chr10  43119646      * |   45.9846  0.459846
+##   -------
+##   seqinfo: 21 sequences from an unspecified genome; no seqlengths</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="variant-annotation.html#cb39-1" tabindex="-1"></a><span class="co"># RET gene exons</span></span>
+<span id="cb39-2"><a href="variant-annotation.html#cb39-2" tabindex="-1"></a><span class="fu">head</span>(features)</span></code></pre></div>
+<pre><code>## GRanges object with 6 ranges and 0 metadata columns:
+##       seqnames            ranges strand
+##          &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt;
+##   RET    chr10 43077026-43077331      *
+##   RET    chr10 43100458-43100722      *
+##   RET    chr10 43102341-43102629      *
+##   RET    chr10 43104731-43105193      *
+##   RET    chr10 43106375-43106571      *
+##   RET    chr10 43109030-43109230      *
+##   -------
+##   seqinfo: 22 sequences from an unspecified genome; no seqlengths</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="variant-annotation.html#cb41-1" tabindex="-1"></a><span class="fu">lolliplot</span>(sample.gr, features, <span class="at">ylab =</span> <span class="st">&quot;Allele Frequency (%)&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p>Simple improvements are to increase the heigth and color of the exons (all exons share the same value):</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="variant-annotation.html#cb42-1" tabindex="-1"></a>features<span class="sc">$</span>height <span class="ot">&lt;-</span> <span class="fl">0.03</span></span>
+<span id="cb42-2"><a href="variant-annotation.html#cb42-2" tabindex="-1"></a>features<span class="sc">$</span>fill <span class="ot">&lt;-</span> <span class="st">&quot;lightblue&quot;</span></span>
+<span id="cb42-3"><a href="variant-annotation.html#cb42-3" tabindex="-1"></a><span class="fu">head</span>(features)</span></code></pre></div>
+<pre><code>## GRanges object with 6 ranges and 2 metadata columns:
+##       seqnames            ranges strand |    height        fill
+##          &lt;Rle&gt;         &lt;IRanges&gt;  &lt;Rle&gt; | &lt;numeric&gt; &lt;character&gt;
+##   RET    chr10 43077026-43077331      * |      0.03   lightblue
+##   RET    chr10 43100458-43100722      * |      0.03   lightblue
+##   RET    chr10 43102341-43102629      * |      0.03   lightblue
+##   RET    chr10 43104731-43105193      * |      0.03   lightblue
+##   RET    chr10 43106375-43106571      * |      0.03   lightblue
+##   RET    chr10 43109030-43109230      * |      0.03   lightblue
+##   -------
+##   seqinfo: 22 sequences from an unspecified genome; no seqlengths</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="variant-annotation.html#cb44-1" tabindex="-1"></a><span class="fu">lolliplot</span>(sample.gr, features, <span class="at">ylab =</span> <span class="st">&quot;Allele Frequency (%)&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<p>Adding labels to the variants, in this case some random dbsnp IDs but these could be any other value available:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="variant-annotation.html#cb45-1" tabindex="-1"></a><span class="co"># Generate random dbsnp IDs</span></span>
+<span id="cb45-2"><a href="variant-annotation.html#cb45-2" tabindex="-1"></a>dbsnp_ids <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;rs&quot;</span>, <span class="fu">sample</span>(<span class="dv">239283</span><span class="sc">:</span><span class="dv">532801</span>, <span class="fu">length</span>(sample.gr)))</span>
+<span id="cb45-3"><a href="variant-annotation.html#cb45-3" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="variant-annotation.html#cb45-4" tabindex="-1"></a><span class="co"># Add names to the IRanges object within the GRanges</span></span>
+<span id="cb45-5"><a href="variant-annotation.html#cb45-5" tabindex="-1"></a>sample.gr <span class="ot">&lt;-</span> <span class="fu">setNames</span>(sample.gr, dbsnp_ids)</span>
+<span id="cb45-6"><a href="variant-annotation.html#cb45-6" tabindex="-1"></a></span>
+<span id="cb45-7"><a href="variant-annotation.html#cb45-7" tabindex="-1"></a><span class="fu">lolliplot</span>(sample.gr, features, <span class="at">ylab =</span> <span class="st">&quot;Allele Frequency (%)&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" />
+Changing the color based on the <em>effect impact</em> from the <code>SnpEff</code> Galaxy tool</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="variant-annotation.html#cb46-1" tabindex="-1"></a>effect <span class="ot">&lt;-</span>       <span class="fu">c</span>(<span class="st">&quot;MODERATE&quot;</span>, <span class="st">&quot;LOW&quot;</span>, <span class="st">&quot;MODIFIER&quot;</span>, <span class="st">&quot;HIGH&quot;</span>)</span>
+<span id="cb46-2"><a href="variant-annotation.html#cb46-2" tabindex="-1"></a>effect.color <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>,   <span class="st">&quot;blue&quot;</span>,<span class="st">&quot;green&quot;</span>, <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb46-3"><a href="variant-annotation.html#cb46-3" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="variant-annotation.html#cb46-4" tabindex="-1"></a><span class="co"># Randomly select an effect for each variant</span></span>
+<span id="cb46-5"><a href="variant-annotation.html#cb46-5" tabindex="-1"></a>sample.gr<span class="sc">$</span>effect <span class="ot">&lt;-</span> effect[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="fu">length</span>(sample.gr), <span class="at">replace =</span> <span class="cn">TRUE</span>)]</span>
+<span id="cb46-6"><a href="variant-annotation.html#cb46-6" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="variant-annotation.html#cb46-7" tabindex="-1"></a><span class="co"># Given the effect, get the matching color</span></span>
+<span id="cb46-8"><a href="variant-annotation.html#cb46-8" tabindex="-1"></a>sample.gr<span class="sc">$</span>color <span class="ot">&lt;-</span> effect.color[<span class="fu">match</span>(sample.gr<span class="sc">$</span>effect, effect)]</span>
+<span id="cb46-9"><a href="variant-annotation.html#cb46-9" tabindex="-1"></a></span>
+<span id="cb46-10"><a href="variant-annotation.html#cb46-10" tabindex="-1"></a><span class="fu">lolliplot</span>(sample.gr, features, <span class="at">ylab =</span> <span class="st">&quot;Allele Frequency (%)&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p>If there are a lot of variants close together, an alternative can be the <em>dandelion plot</em> which is a variation of the lollipop plot where the variants are grouped together based on their position. It’s available from the same library, see the <a href="https://bioconductor.org/packages/release/bioc/vignettes/trackViewer/inst/doc/trackViewer.html#Dandelion_Plot">online manual</a> for more information.</p>
+</div>
+<div id="galaxy-data-cleanup" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Galaxy Data Cleanup<a href="variant-annotation.html#galaxy-data-cleanup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As a final closing task we ask you to clean up the Galaxy histories to save some space because it is difficult for the admin(s) to perform this cleaning for you. Once all products are finished, please consider removing all large files from your history, such as the outputs of the trimming (Trimmomatic), mapping (BWA), duplicate read marking (MarkDuplicates) and the pileup steps (Mpileup). For the large files, please make sure that you <em>also</em> click the <em>Permanently remove it from disk</em> link.</p>
 
 </div>
 </div>

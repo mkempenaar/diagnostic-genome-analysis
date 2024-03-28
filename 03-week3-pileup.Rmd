@@ -530,7 +530,7 @@ We will create two simple visualizations:
 
 * Visualize the **allele frequency** for all remaining variants using the `hist` function. Remember that you can use the `mcols` function to get a metadata column or use the `$`-sign and the name of the column. Pass the argument `breaks=20` to `hist` and answer the following question in your lab-journal:
     - Can you explain the two peaks that you see in your histogram (around 50% and 100%)? 
-* Visualize the amount of variants per gene. A simple solution for getting the numbers is to use the `table` function on the `queryHits` column (output of `findOverlaps`). Convert it to a data frame and then use the gene indices to get the actual gene names. Now you should have a combination of gene and number of variants. Create a barplot with this data as in the previous chapter and use `cex.names=0.7` to scale the gene names to make them all visible.
+* Visualize the amount of variants per gene. A simple solution for getting the numbers is to use the `table` function on the `subjectHits` column (output of `findOverlaps` where `subject` are the *genes*). Convert it to a data frame and then use the gene indices to get the actual gene names. Now you should have a combination of gene and number of variants. Create a barplot with this data as in the previous chapter and use `cex.names=0.7` to scale the gene names to make them all visible.
 
 It is also possible to add the VCF file to IGV (together with the mapping- and BED-files) and visualize the variants in the context of the genes. This is however not a requirement for this assignment.
 
