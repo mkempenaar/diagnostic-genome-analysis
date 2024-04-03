@@ -215,6 +215,7 @@ The poster should be designed to be visually appealing and easy to read. You can
 **LollipopPlot**
 
 This visualization can be helpful in cases where many of the top-variants are located within a single gene. The plot shows the position of the variant on the x-axis and a score on the y-axis. The score can be the *AF* value from the VCF file or any other score that was added through the annotation steps. Further data ('dimensions') can be added through for instance:
+
 * The color of the lollipop (e.g. red for a high score, green for a low score)
 * The size of the lollipop (e.g. the size of the lollipop is proportional to the score)
 * The symbol of the lollipop (e.g. a star for a variant that is validated)
@@ -229,10 +230,13 @@ library(trackViewer)
 ```
 
 It requires two data sources for our use case:
-* The *sample* data which should be a GRanges object containing the **variants**
-* The *feature* data containing the **gene** on which these variants are located
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=FALSE}
+* The *sample* data which should be a `GRanges` object containing the **variants**
+  - the example below shows how we use the output of `findOverlaps` to get the variants for a single gene
+* The *feature* data containing the **gene** on which these variants are located, also in `GRanges` format
+  - to get all exons for the selected gene we use our BED-data which is already in an `GRanges` object.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, eval=TRUE}
 library(trackViewer)
 
 load("data/lolli-sample.RData")
@@ -245,16 +249,32 @@ features$fill <- NULL
 features$height <- NULL
 ```
 
+```{r, eval=FALSE}
+# Preparing the data; first attach the gene names to the findOverlaps output
+overlap_df$Gene <- names(bed_data)[overlap_df$subjectHits]
+
+# Then, use this to get all variants from a single gene ('RET' in this example)
+# Note that the vcf_Granges already containes the Allele frequency values (AF)
+sample.gr <- vcf_GRanges[unlist(subset(overlap_df, Gene == "RET", select = queryHits))]
+
+# The features are taken from the GRangesList object from chapter 3, assignment 3
+features <- bed_data$RET
+```
+
 This basic example shows 9 variants for the RET gene, with the *AF* value as the score (scaled to a range of 0-100%). The plot shows the position of the variant on the x-axis and the allele-frequency on the y-axis.
 
-```{r, echo=TRUE, eval=FALSE}
+**Note**: scores are a bit weird in this plot; for instance you cannot show values ranging from 0 to 1 (such as SIFT scores). Values between 1-10 are shown as stacked nodes (see the [Change the height of a lollipop plot](https://bioconductor.org/packages/release/bioc/vignettes/trackViewer/inst/doc/lollipopPlot.html#Change_the_height_of_a_lollipop_plot) section of the manual). A safe solution is to scale values from 0-100 as shown below. Alternatively, we can use the stacks to show the amount of splice variants at a single location (up to a maximum of 10).
+
+```{r, echo=TRUE, eval=TRUE}
 # Calculate AF as percentage and set as 'score' field
 sample.gr$score <- sample.gr$AF * 100
 head(sample.gr)
 
 # RET gene exons
 head(features)
+```
 
+```{r, eval=FALSE}
 lolliplot(sample.gr, features, ylab = "Allele Frequency (%)")
 ```
 
@@ -262,7 +282,7 @@ lolliplot(sample.gr, features, ylab = "Allele Frequency (%)")
 knitr::include_graphics("images/lolliplot_1.png")
 ```
 
-Simple improvements are to increase the heigth and color of the exons (all exons share the same value):
+Simple improvements are to increase the height and color of the exons (all exons share the same value):
 
 ```{r, echo=TRUE, eval=FALSE}
 features$height <- 0.03
